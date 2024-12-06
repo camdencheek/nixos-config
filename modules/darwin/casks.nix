@@ -6,6 +6,10 @@ _:
   "visual-studio-code"
   "zed"
   "wezterm"
+  "bruno"
+  "cleanshot"
+  "figma"
+  "linear-linear"
 
   # Communication Tools
   "discord"
@@ -20,6 +24,7 @@ _:
 
   # Productivity Tools
   "raycast"
+  "bitwarden"
 
   # Browsers
   "google-chrome"
