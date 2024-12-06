@@ -5,6 +5,7 @@ _:
   "homebrew/cask/docker"
   "visual-studio-code"
   "zed"
+  "wezterm"
 
   # Communication Tools
   "discord"

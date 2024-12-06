@@ -1,14 +1,8 @@
-{ config, pkgs, lib, home-manager, ... }:
+{ config, pkgs, ... }:
 
 let
   user = "ccheek";
-  # Define the content of your file as a derivation
-  myEmacsLauncher = pkgs.writeScript "emacs-launcher.command" ''
-    #!/bin/sh
-    emacsclient -c -n &
-  '';
   sharedFiles = import ../shared/files.nix { inherit config pkgs; };
-  additionalFiles = import ./files.nix { inherit user config pkgs; };
 in
 {
   imports = [
@@ -53,8 +47,6 @@ in
         packages = pkgs.callPackage ./packages.nix {};
         file = lib.mkMerge [
           sharedFiles
-          additionalFiles
-          { "emacs-launcher.command".source = myEmacsLauncher; }
         ];
 
         stateVersion = "23.11";
@@ -70,14 +62,9 @@ in
   # Fully declarative dock using the latest from Nix Store
   local = {
     dock = {
-      enable = true;
+      enable = false;
       entries = [
         { path = "/Applications/Slack.app/"; }
-        # TODO: get rid of emacs
-        {
-          path = toString myEmacsLauncher;
-          section = "others";
-        }
       ];
     };
   };
