@@ -78,7 +78,8 @@ let name = "Camden Cheek";
 	    editor = "vim";
         autocrlf = "input";
       };
-      commit.gpgsign = true;
+      # disable gpg signing until I set up my keys
+      # commit.gpgsign = true;
       pull.rebase = true;
       rebase.autoStash = true;
     };

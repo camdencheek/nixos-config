@@ -4,6 +4,7 @@ _:
   # Development Tools
   "homebrew/cask/docker"
   "visual-studio-code"
+  "zed"
 
   # Communication Tools
   "discord"
@@ -23,4 +24,5 @@ _:
 
   # Browsers
   "google-chrome"
+  "firefox@developer-edition"
 ]
