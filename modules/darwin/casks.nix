@@ -9,12 +9,10 @@ _:
   # Communication Tools
   "discord"
   "notion"
+  "notion-calendar"
   "slack"
   "telegram"
   "zoom"
-
-  # Utility Tools
-  "syncthing"
 
   # Entertainment Tools
   "vlc"

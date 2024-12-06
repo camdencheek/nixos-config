@@ -38,24 +38,6 @@ let name = "Camden Cheek";
       # Ripgrep alias
       alias search=rg -p --glob '!node_modules/*'  $@
 
-      # Emacs is my editor
-      export ALTERNATE_EDITOR=""
-      export EDITOR="emacsclient -t"
-      export VISUAL="emacsclient -c -a emacs"
-
-      e() {
-          emacsclient -t "$@"
-      }
-
-      # nix shortcuts
-      shell() {
-          nix-shell '<nixpkgs>' -A "$1"
-      }
-
-      # pnpm is a javascript package manager
-      alias pn=pnpm
-      alias px=pnpx
-
       # Use difftastic, syntax-aware diffing
       alias diff=difft
 
@@ -66,7 +48,6 @@ let name = "Camden Cheek";
 
   git = {
     enable = true;
-    ignores = [ "*.swp" ];
     userName = name;
     userEmail = email;
     lfs = {
@@ -75,12 +56,15 @@ let name = "Camden Cheek";
     extraConfig = {
       init.defaultBranch = "main";
       core = {
-	    editor = "vim";
+        editor = "nvim";
         autocrlf = "input";
       };
       # disable gpg signing until I set up my keys
       # commit.gpgsign = true;
-      pull.rebase = true;
+      pull = {
+        rebase = true;
+        prune = true;
+      };
       rebase.autoStash = true;
     };
   };
