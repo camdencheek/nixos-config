@@ -43,7 +43,8 @@ in
 
   local = {
     dock = {
-      enable = false;
+      enable = true;
+      entries = [];
     };
   };
 }
