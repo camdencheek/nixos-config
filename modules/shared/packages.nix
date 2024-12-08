@@ -14,6 +14,8 @@ with pkgs; [
   sqlite
   wget
   zip
+  fzf
+  eza
 
   # Language tools
   nixd
