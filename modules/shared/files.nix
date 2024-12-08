@@ -12,4 +12,8 @@
   ".config/wezterm/wezterm.lua" = {
     text = builtins.readFile ./config/wezterm.lua;
   };
+
+  ".config/aerospace/aerospace.toml" = {
+    text = builtins.readFile ./config/aerospace.toml;
+  };
 }
