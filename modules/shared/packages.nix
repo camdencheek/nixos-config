@@ -43,6 +43,7 @@ with pkgs; [
   hack-font
   noto-fonts
   noto-fonts-emoji
+  intel-one-mono
   meslo-lgs-nf
 
   # Node.js development tools
