@@ -4,11 +4,9 @@ let name = "Camden Cheek";
     user = "ccheek";
     email = "camden@ccheek.com"; in
 {
-  # Shared shell configuration
+  # Documented here: https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
   zsh = {
     enable = true;
-    autocd = false;
-    cdpath = [ "~/.local/share/src" ];
     plugins = [
       {
           name = "powerlevel10k";
@@ -26,24 +24,32 @@ let name = "Camden Cheek";
         . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
         . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
       fi
-
-      # Define variables for directories
-      export PATH=$HOME/.pnpm-packages/bin:$HOME/.pnpm-packages:$PATH
-      export PATH=$HOME/.npm-packages/bin:$HOME/bin:$PATH
-      export PATH=$HOME/.local/share/bin:$PATH
-
-      # Remove history data we don't want to see
-      export HISTIGNORE="pwd:ls:cd"
-
-      # Ripgrep alias
-      alias search=rg -p --glob '!node_modules/*'  $@
-
-      # Use difftastic, syntax-aware diffing
-      alias diff=difft
-
-      # Always color ls and group directories
-      alias ls='ls --color=auto'
     '';
+    initExtra = builtins.readFile ./config/zsh/zshrc;
+    autocd = false;
+    dotDir = ".config/zsh";
+    defaultKeymap = "emacs";
+    shellAliases = {
+      ls = "exa";
+
+      # Git aliases
+      gap = "git add --patch";
+      gl = "git pull";
+      gp = "git push --set-upstream origin";
+      gpu = "git push --set-upstream origin HEAD:refs/heads/cc/$(git rev-parse --abbrev-ref HEAD)";
+      gco = "git checkout";
+      gs = "git status -sb";
+      gac = "git add -A && git commit -m";
+    };
+    history = {
+      append = true;
+      path = "${config.xdg.dataHome}/zsh/zsh_history";
+      ignoreDups = false;
+      ignoreAllDups = true;
+      ignoreSpace = false;
+      extended = true;
+      share = true;
+    };
   };
 
   git = {

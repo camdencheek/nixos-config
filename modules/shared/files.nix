@@ -13,4 +13,9 @@
     source = ./config/nvim;
     recursive = true;
   };
+
+  ".config/zsh" = {
+    source = ./config/zsh;
+    recursive = true;
+  };
 }
