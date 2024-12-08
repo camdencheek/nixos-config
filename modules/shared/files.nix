@@ -18,4 +18,8 @@
     source = ./config/zsh;
     recursive = true;
   };
+
+  ".psqlrc" = {
+    text = builtins.readFile ./config/psqlrc;
+  };
 }
