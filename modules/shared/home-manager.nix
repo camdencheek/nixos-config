@@ -30,7 +30,7 @@ let name = "Camden Cheek";
     dotDir = ".config/zsh";
     defaultKeymap = "emacs";
     shellAliases = {
-      ls = "exa";
+      ls = "eza";
 
       # Git aliases
       gap = "git add --patch";
