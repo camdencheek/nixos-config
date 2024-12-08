@@ -13,7 +13,17 @@
     text = builtins.readFile ./config/wezterm.lua;
   };
 
+  # TODO: this is MacOS-only. Move it to the darwin module.
   ".config/aerospace/aerospace.toml" = {
     text = builtins.readFile ./config/aerospace.toml;
+  };
+
+  ".config/zed/settings.json" = {
+    text = builtins.readFile ./config/zed.json;
+  };
+
+  ".config/nvim" = {
+    source = ./config/nvim;
+    recursive = true;
   };
 }
