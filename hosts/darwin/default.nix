@@ -92,4 +92,18 @@ let user = "ccheek"; in
       };
     };
   };
+
+
+  # Configure and auto-start PostgreSQL
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql;
+    enableTCPIP = true;
+    dataDir = "/var/postgres/data";  # You can change this path
+    authentication = pkgs.lib.mkForce ''
+      # Type  Database  User  Address  Method
+      local   all       all           trust
+      host    all       all   0.0.0.0/0    trust
+    '';
+  };
 }

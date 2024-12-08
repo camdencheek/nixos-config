@@ -8,28 +8,31 @@ with pkgs; [
   bat
   btop
   coreutils
+  direnv
+  eza
+  fre
+  fzf
+  git
   killall
   neovim
   openssh
   sqlite
   wget
   zip
-  fzf
-  eza
-  fre
-  git
 
   # Language tools
   nixd
-  nil
+  nil # another nix language server
   go
   gopls
+  rustup
 
   # Encryption and security tools
   age
   age-plugin-yubikey
   gnupg
   libfido2
+  nss.tools # includes certutil
 
   # Cloud-related tools and SDKs
   docker
@@ -70,5 +73,12 @@ with pkgs; [
   # Sourcegraph-specific utilities
   # TODO: split this out
   google-cloud-sdk
-  asdf
+  asdf-vm
+  findutils
+  pcre
+  bazel
+  bazelisk
+  bazel-watcher
+  p4
+  postgresql
 ]

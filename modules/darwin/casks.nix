@@ -1,6 +1,4 @@
-_:
-
-[
+_: [
   # Development Tools
   "homebrew/cask/docker"
   "visual-studio-code"
@@ -13,8 +11,6 @@ _:
 
   # Communication Tools
   "discord"
-  "notion"
-  "notion-calendar"
   "slack"
   "telegram"
   "zoom"
@@ -30,6 +26,8 @@ _:
   "stats"
   "aerospace"
   "logseq"
+  "notion"
+  "notion-calendar"
 
   # Browsers
   "google-chrome"
