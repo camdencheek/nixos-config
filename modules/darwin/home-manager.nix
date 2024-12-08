@@ -3,6 +3,7 @@
 let
   user = "ccheek";
   sharedFiles = import ../shared/files.nix { inherit config pkgs; };
+  darwinFiles = import ./files.nix { inherit config pkgs; };
 in
 {
   imports = [
@@ -29,6 +30,7 @@ in
         packages = pkgs.callPackage ./packages.nix {};
         file = lib.mkMerge [
           sharedFiles
+          darwinFiles
         ];
 
         stateVersion = "23.11";
