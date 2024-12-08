@@ -16,10 +16,14 @@ with pkgs; [
   zip
   fzf
   eza
+  fre
+  git
 
   # Language tools
   nixd
   nil
+  go
+  gopls
 
   # Encryption and security tools
   age
@@ -61,4 +65,9 @@ with pkgs; [
   # Python packages
   python3
   virtualenv
+
+  # Sourcegraph-specific utilities
+  # TODO: split this out
+  google-cloud-sdk
+  asdf
 ]
