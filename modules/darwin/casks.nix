@@ -21,6 +21,7 @@ _:
 
   # Entertainment Tools
   "vlc"
+  "spotify"
 
   # Productivity Tools
   "raycast"
@@ -28,6 +29,7 @@ _:
   "bartender"
   "stats"
   "aerospace"
+  "logseq"
 
   # Browsers
   "google-chrome"
