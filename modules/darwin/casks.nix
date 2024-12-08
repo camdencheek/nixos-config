@@ -25,6 +25,9 @@ _:
   # Productivity Tools
   "raycast"
   "bitwarden"
+  "bartender"
+  "stats"
+  "aerospace"
 
   # Browsers
   "google-chrome"
