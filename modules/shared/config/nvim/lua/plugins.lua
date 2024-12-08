@@ -75,12 +75,6 @@ require("lazy").setup({
         config = require("config.tree").config,
     },
 
-    -- Allows easy switching between vim and tmux panes
-    {
-        "mrjones2014/smart-splits.nvim",
-        config = require("config.splits").config,
-    },
-
     -- LSP
     {
         "williamboman/mason.nvim",
@@ -172,9 +166,9 @@ require("lazy").setup({
         },
         config = function()
             require("undotree").setup({
-                float_diff = true, -- using float window previews diff, set this `true` will disable layout option
+                float_diff = true,      -- using float window previews diff, set this `true` will disable layout option
                 layout = "left_bottom", -- "left_bottom", "left_left_bottom"
-                position = "left", -- "right", "bottom"
+                position = "left",      -- "right", "bottom"
                 ignore_filetype = {
                     "undotree",
                     "undotreeDiff",
