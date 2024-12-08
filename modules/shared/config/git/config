@@ -1,0 +1,48 @@
+[user]
+	name = Camden Cheek
+	signingkey = AA3B82D30534D13365809E56595BFFE3A04E48B9
+
+[init]
+	defaultBranch = main
+
+[http]
+	cookiefile = /Users/camdencheek/.gitcookies
+
+# [commit]
+# 	 gpgSign = true
+
+[pull]
+	rebase = true
+	prune = true
+
+[fetch]
+	prune = true
+
+[fixup]
+	commit = true
+
+[rebase]
+	autosquash = true
+
+[log]
+	date = local
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
+	pager = true
+
+[alias]
+	gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
+
+[branch]
+	sort = committerdate
+
+[include]
+    path = config_personal
+
+[includeIf "gitdir:~/src/sourcegraph"]
+    path = config_work

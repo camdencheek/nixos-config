@@ -52,29 +52,6 @@ let name = "Camden Cheek";
     };
   };
 
-  git = {
-    enable = true;
-    userName = name;
-    userEmail = email;
-    lfs = {
-      enable = true;
-    };
-    extraConfig = {
-      init.defaultBranch = "main";
-      core = {
-        editor = "nvim";
-        autocrlf = "input";
-      };
-      # disable gpg signing until I set up my keys
-      # commit.gpgsign = true;
-      pull = {
-        rebase = true;
-        prune = true;
-      };
-      rebase.autoStash = true;
-    };
-  };
-
   ssh = {
     enable = true;
     includes = [

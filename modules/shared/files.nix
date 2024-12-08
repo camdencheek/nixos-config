@@ -19,6 +19,11 @@
     recursive = true;
   };
 
+  ".config/git" = {
+    source = ./config/git;
+    recursive = true;
+  };
+
   ".psqlrc" = {
     text = builtins.readFile ./config/psqlrc;
   };
