@@ -19,6 +19,9 @@ in
 
   homebrew = {
     enable = true;
+    onActivation = {
+      cleanup = "uninstall";
+    };
     casks = pkgs.callPackage ./casks.nix {};
   };
 

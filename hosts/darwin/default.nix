@@ -95,15 +95,22 @@ let user = "ccheek"; in
 
 
   # Configure and auto-start PostgreSQL
+  # TODO: this should probably be Sourcegraph-only
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql;
     enableTCPIP = true;
-    dataDir = "/var/postgres/data";  # You can change this path
+    dataDir = "/var/lib/postgresql";
     authentication = pkgs.lib.mkForce ''
       # Type  Database  User  Address  Method
       local   all       all           trust
       host    all       all   0.0.0.0/0    trust
     '';
+  };
+
+  # Configure and auto-start Redis
+  services.redis = {
+    enable = true;
+    package = pkgs.redis;
   };
 }

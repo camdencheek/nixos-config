@@ -19,6 +19,7 @@ with pkgs; [
   sqlite
   wget
   zip
+  parallel
 
   # Language tools
   nixd
@@ -76,9 +77,11 @@ with pkgs; [
   asdf-vm
   findutils
   pcre
-  bazel
   bazelisk
   bazel-watcher
   p4
   postgresql
+  redis
+  caddy
+  concurrently
 ]
