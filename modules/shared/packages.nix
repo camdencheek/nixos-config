@@ -20,6 +20,7 @@ with pkgs; [
   wget
   zip
   parallel
+  git-open
 
   # Language tools
   nixd

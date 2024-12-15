@@ -8,6 +8,9 @@ _: [
   "cleanshot"
   "figma"
   "linear-linear"
+  "burp-suite"
+  "ollama"
+  "proxyman"
 
   # Communication Tools
   "discord"

@@ -9,7 +9,7 @@ export GOBIN="$HOME/go/bin"
 path=(
 	$path
 	$GOBIN
-	$HOME/.local/bin
+	$HOME/.bin
 	$HOME/scripts
 	$HOME/.cargo/bin
 	$HOME/.sg
