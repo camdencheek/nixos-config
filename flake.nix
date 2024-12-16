@@ -23,29 +23,21 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    nikitabobko = {
-      url = "github:nikitabobko/homebrew-tap";
-      flake = false;
-    };
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    secrets = {
-      url = "git+ssh://git@github.com/camdencheek/nix-secrets.git";
-      flake = false;
+    localConfig = {
+       url = "/Users/ccheek/nixos-config/locals.nix";
+       flake = false;
     };
   };
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, nixpkgs, nikitabobko, disko, agenix, secrets } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, nixpkgs, agenix, localConfig } @inputs:
     let
-      user = "ccheek";
+      locals = import localConfig {};
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
       darwinSystems = [ "aarch64-darwin" "x86_64-darwin" ];
       forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
       devShell = system: let pkgs = nixpkgs.legacyPackages.${system}; in {
         default = with pkgs; mkShell {
           nativeBuildInputs = with pkgs; [ bashInteractive git age age-plugin-yubikey ];
-          shellHook = with pkgs; ''
+          shellHook = ''
             export EDITOR=vim
           '';
         };
@@ -84,26 +76,26 @@
 
       darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (system:
         darwin.lib.darwinSystem {
-          inherit system;
+          inherit system ;
           specialArgs = inputs;
           modules = [
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
             {
               nix-homebrew = {
-                inherit user;
+                user = locals.username;
                 enable = true;
                 taps = {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "homebrew/homebrew-bundle" = homebrew-bundle;
-                  "nikitabobko/homebrew-tap" = nikitabobko;
                 };
                 mutableTaps = false;
                 autoMigrate = true;
               };
             }
             ./hosts/darwin
+            { inherit locals; }
           ];
         }
       );
@@ -112,12 +104,11 @@
         inherit system;
         specialArgs = inputs;
         modules = [
-          disko.nixosModules.disko
           home-manager.nixosModules.home-manager {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.${user} = import ./modules/nixos/home-manager.nix;
+              users.${locals.username} = import ./modules/nixos/home-manager.nix;
             };
           }
           ./hosts/nixos

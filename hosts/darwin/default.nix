@@ -1,13 +1,11 @@
 { agenix, config, pkgs, ... }:
 
-let user = "ccheek"; in
-
 {
-
   imports = [
     ../../modules/darwin/secrets.nix
     ../../modules/darwin/home-manager.nix
     ../../modules/shared
+    ../../modules/shared/locals.nix
      agenix.darwinModules.default
   ];
 
@@ -18,7 +16,7 @@ let user = "ccheek"; in
   nix = {
     package = pkgs.nix;
     settings = {
-      trusted-users = [ "@admin" "${user}" ];
+      trusted-users = [ "@admin" "${config.locals.username}" ];
       substituters = [ "https://nix-community.cachix.org" "https://cache.nixos.org" ];
       trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
     };
@@ -108,4 +106,5 @@ let user = "ccheek"; in
     enable = true;
     package = pkgs.redis;
   };
+
 }

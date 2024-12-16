@@ -1,13 +1,14 @@
 { config, pkgs, ... }:
 
 let
-  user = "ccheek";
+  user = config.locals.username;
   sharedFiles = import ../shared/files.nix { inherit config pkgs; };
   darwinFiles = import ./files.nix { inherit config pkgs; };
 in
 {
   imports = [
    ./dock
+   ../shared/locals.nix
   ];
 
   users.users.${user} = {

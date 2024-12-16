@@ -81,26 +81,6 @@
         "type": "github"
       }
     },
-    "disko": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1733168902,
-        "narHash": "sha256-8dupm9GfK+BowGdQd7EHK5V61nneLfr9xR6sc5vtDi0=",
-        "owner": "nix-community",
-        "repo": "disko",
-        "rev": "785c1e02c7e465375df971949b8dcbde9ec362e5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "disko",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems_2"
@@ -206,20 +186,17 @@
         "type": "github"
       }
     },
-    "nikitabobko": {
+    "localConfig": {
       "flake": false,
       "locked": {
-        "lastModified": 1733437300,
-        "narHash": "sha256-r0gkdyPodHNid+bcAbVtSgtUR0BkyWa0mpTJkpaq8sw=",
-        "owner": "nikitabobko",
-        "repo": "homebrew-tap",
-        "rev": "64d46a5546d3fe6f7ab368f5a3df0984adfe7087",
-        "type": "github"
+        "lastModified": 1734388832,
+        "narHash": "sha256-4+/Sn3bGepKHr5BVY/iL3B5OmdnxIzU8ByEACjjnljs=",
+        "path": "/Users/ccheek/nixos-config/locals.nix",
+        "type": "path"
       },
       "original": {
-        "owner": "nikitabobko",
-        "repo": "homebrew-tap",
-        "type": "github"
+        "path": "/Users/ccheek/nixos-config/locals.nix",
+        "type": "path"
       }
     },
     "nix-darwin": {
@@ -342,31 +319,13 @@
       "inputs": {
         "agenix": "agenix",
         "darwin": "darwin_2",
-        "disko": "disko",
         "home-manager": "home-manager_2",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "nikitabobko": "nikitabobko",
+        "localConfig": "localConfig",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs_5",
-        "secrets": "secrets"
-      }
-    },
-    "secrets": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1733453377,
-        "narHash": "sha256-ieeH+jx8V83fqZvreQ0BCijm31IAUY20QwVHkaPGjrQ=",
-        "ref": "refs/heads/main",
-        "rev": "57b0690551713d69867fddb4a62f4c922f7095b2",
-        "revCount": 1,
-        "type": "git",
-        "url": "ssh://git@github.com/camdencheek/nix-secrets.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/camdencheek/nix-secrets.git"
+        "nixpkgs": "nixpkgs_5"
       }
     },
     "systems": {
