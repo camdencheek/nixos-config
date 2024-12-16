@@ -85,11 +85,6 @@ let user = "ccheek"; in
       finder = {
         _FXShowPosixPathInTitle = false;
       };
-
-      trackpad = {
-        Clicking = true;
-        TrackpadThreeFingerDrag = false;
-      };
     };
   };
 
