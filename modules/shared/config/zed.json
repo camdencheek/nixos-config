@@ -25,5 +25,8 @@
     "inline_blame": {
       "delay_ms": 500
     }
+  },
+  "auto_install_extensions": {
+    "git-firefly": true
   }
 }
