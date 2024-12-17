@@ -1,4 +1,4 @@
-{lib, config, ...}:
+{lib, config, locals, ...}:
 
 let
     default =  [
@@ -40,9 +40,12 @@ let
       "figma"
       "notion"
     ];
-in {
-  imports = [../shared/locals.nix];
-  config = lib.unique (
+    personal = [
+      "steam"
+    ];
+in
+  lib.unique (
   default ++
-  (lib.optionals config.locals.tags.work sourcegraph));
-}
+  (lib.optionals locals.tags.work sourcegraph) ++
+  (lib.optionals locals.tags.personal personal)
+  )

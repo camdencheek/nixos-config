@@ -10,9 +10,11 @@ with lib; {
       tags = {
         personal = mkOption {
           type = types.bool;
+          default = false;
         };
         work = mkOption {
           type = types.bool;
+          default = false;
         };
       };
     };

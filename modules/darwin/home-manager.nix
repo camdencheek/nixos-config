@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, locals, ... }:
 
 let
-  user = config.locals.username;
+  user = locals.username;
   sharedFiles = import ../shared/files.nix { inherit config pkgs; };
   darwinFiles = import ./files.nix { inherit config pkgs; };
 in
@@ -23,7 +23,7 @@ in
     onActivation = {
       cleanup = "uninstall";
     };
-    casks = pkgs.callPackage ./casks.nix {};
+    casks = pkgs.callPackage ./casks.nix { inherit locals; };
   };
 
   home-manager = {
