@@ -85,4 +85,5 @@ with pkgs; [
   redis
   caddy
   concurrently
+  pspg
 ]

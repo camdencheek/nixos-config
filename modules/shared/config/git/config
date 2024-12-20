@@ -6,7 +6,7 @@
 	defaultBranch = main
 
 [http]
-	cookiefile = /Users/camdencheek/.gitcookies
+	cookiefile = /Users/ccheek/.gitcookies
 
 # [commit]
 # 	 gpgSign = true
