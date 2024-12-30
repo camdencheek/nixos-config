@@ -6,7 +6,7 @@ _:
     text = ''
       #!/bin/sh
       exec bazelisk "$@"
-    '' ;
+    '';
     executable = true;
   };
 }

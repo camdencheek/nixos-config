@@ -1,8 +1,9 @@
 { lib, ... }:
 
-with lib; {
+with lib;
+{
   options = {
-    locals  = {
+    locals = {
       username = mkOption {
         type = types.str;
         default = "ccheek";

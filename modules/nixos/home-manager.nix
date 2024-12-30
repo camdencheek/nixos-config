@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   user = "ccheek";
@@ -10,11 +15,13 @@ in
     enableNixpkgsReleaseCheck = false;
     username = "${user}";
     homeDirectory = "/home/${user}";
-    packages = pkgs.callPackage ./packages.nix {};
-    file = shared-files ;
+    packages = pkgs.callPackage ./packages.nix { };
+    file = shared-files;
     stateVersion = "21.05";
   };
 
-  programs = shared-programs // { gpg.enable = true; };
+  programs = shared-programs // {
+    gpg.enable = true;
+  };
 
 }

@@ -1,11 +1,17 @@
-{ agenix, config, pkgs, locals, ... }:
+{
+  agenix,
+  config,
+  pkgs,
+  locals,
+  ...
+}:
 
 {
   imports = [
     ../../modules/darwin/secrets.nix
     ../../modules/darwin/home-manager.nix
     ../../modules/shared
-     agenix.darwinModules.default
+    agenix.darwinModules.default
   ];
 
   # Auto upgrade nix package and the daemon service.
@@ -15,15 +21,25 @@
   nix = {
     package = pkgs.nix;
     settings = {
-      trusted-users = [ "@admin" "${locals.username}" ];
-      substituters = [ "https://nix-community.cachix.org" "https://cache.nixos.org" ];
+      trusted-users = [
+        "@admin"
+        "${locals.username}"
+      ];
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org"
+      ];
       trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
     };
 
     gc = {
       user = "root";
       automatic = true;
-      interval = { Weekday = 0; Hour = 2; Minute = 0; };
+      interval = {
+        Weekday = 0;
+        Hour = 2;
+        Minute = 0;
+      };
       options = "--delete-older-than 30d";
     };
 
@@ -84,7 +100,6 @@
       };
     };
   };
-
 
   # Configure and auto-start PostgreSQL
   # TODO: this should probably be Sourcegraph-only

@@ -1,4 +1,9 @@
-{ config, pkgs, locals, ... }:
+{
+  config,
+  pkgs,
+  locals,
+  ...
+}:
 
 let
   user = locals.username;
@@ -7,8 +12,8 @@ let
 in
 {
   imports = [
-   ./dock
-   ../shared/locals.nix
+    ./dock
+    ../shared/locals.nix
   ];
 
   users.users.${user} = {
@@ -28,29 +33,36 @@ in
 
   home-manager = {
     useGlobalPkgs = true;
-    users.${user} = { pkgs, config, lib, ... }:{
-      home = {
-        enableNixpkgsReleaseCheck = false;
-        packages = pkgs.callPackage ./packages.nix {};
-        file = lib.mkMerge [
-          sharedFiles
-          darwinFiles
-        ];
+    users.${user} =
+      {
+        pkgs,
+        config,
+        lib,
+        ...
+      }:
+      {
+        home = {
+          enableNixpkgsReleaseCheck = false;
+          packages = pkgs.callPackage ./packages.nix { };
+          file = lib.mkMerge [
+            sharedFiles
+            darwinFiles
+          ];
 
-        stateVersion = "23.11";
+          stateVersion = "23.11";
+        };
+        programs = { } // import ../shared/home-manager.nix { inherit config pkgs lib; };
+
+        # Marked broken Oct 20, 2022 check later to remove this
+        # https://github.com/nix-community/home-manager/issues/3344
+        manual.manpages.enable = false;
       };
-      programs = {} // import ../shared/home-manager.nix { inherit config pkgs lib; };
-
-      # Marked broken Oct 20, 2022 check later to remove this
-      # https://github.com/nix-community/home-manager/issues/3344
-      manual.manpages.enable = false;
-    };
   };
 
   local = {
     dock = {
       enable = true;
-      entries = [];
+      entries = [ ];
     };
   };
 }
