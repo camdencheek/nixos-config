@@ -25,6 +25,7 @@ with pkgs; [
   # Language tools
   nixd
   nil # another nix language server
+  nixfmt-rfc-style
   go
   gopls
   rustup

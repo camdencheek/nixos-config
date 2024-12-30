@@ -1,4 +1,4 @@
-{lib, config, locals, ...}:
+{lib, locals, ...}:
 
 let
     default =  [
@@ -46,7 +46,7 @@ let
     ];
 in
   lib.unique (
-  default ++
-  (lib.optionals locals.tags.work sourcegraph) ++
-  (lib.optionals locals.tags.personal personal)
+  default
+    ++ (lib.optionals locals.tags.work sourcegraph)
+    ++ (lib.optionals locals.tags.personal personal)
   )
