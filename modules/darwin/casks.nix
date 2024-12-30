@@ -6,6 +6,7 @@ let
         "homebrew/cask/docker"
         "zed"
         "wezterm"
+        "ghostty"
         "bruno"
         "burp-suite"
         "ollama"

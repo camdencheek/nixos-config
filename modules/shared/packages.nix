@@ -80,7 +80,6 @@ with pkgs; [
   pcre
   bazelisk
   bazel-watcher
-  p4
   postgresql
   redis
   caddy
