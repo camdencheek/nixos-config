@@ -6,7 +6,7 @@
   };
 
   ".config/zed/settings.json" = {
-    text = builtins.readFile ./config/zed.json;
+    text = builtins.readFile ./config/zed/settings.json;
   };
 
   ".config/nvim" = {
