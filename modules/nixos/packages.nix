@@ -33,7 +33,6 @@ shared-packages
   direnv
   rofi
   rofi-calc
-  postgresql
   libtool # for Emacs vterm
 
   # Screenshot and recording tools

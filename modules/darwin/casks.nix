@@ -40,6 +40,7 @@ let
     "visual-studio-code"
     "figma"
     "notion"
+    "postgres-unofficial"
   ];
   personal = [
     "steam"
