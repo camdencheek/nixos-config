@@ -11,6 +11,7 @@ let
     "burp-suite"
     "ollama"
     "proxyman"
+    "tuple"
 
     # Communication Tools
     "discord"
@@ -29,6 +30,7 @@ let
     "stats"
     "logseq"
     "notion-calendar"
+    "logi-options+"
 
     # Browsers
     "google-chrome"
