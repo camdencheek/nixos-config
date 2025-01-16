@@ -1,5 +1,13 @@
 { pkgs }:
 
+let
+  gdk = pkgs.google-cloud-sdk.withExtraComponents (
+    with pkgs.google-cloud-sdk.components;
+    [
+      gke-gcloud-auth-plugin
+    ]
+  );
+in
 with pkgs;
 [
   # General packages for development and system management
@@ -69,6 +77,7 @@ with pkgs;
   unrar
   unzip
   zsh-powerlevel10k
+  tree-sitter
 
   # Python packages
   python3
@@ -76,7 +85,7 @@ with pkgs;
 
   # Sourcegraph-specific utilities
   # TODO: split this out
-  google-cloud-sdk
+  gdk
   asdf-vm
   findutils
   pcre
@@ -87,4 +96,5 @@ with pkgs;
   caddy
   concurrently
   pspg
+  buf
 ]
