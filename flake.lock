@@ -171,8 +171,8 @@
     "localConfig": {
       "flake": false,
       "locked": {
-        "lastModified": 1735581483,
-        "narHash": "sha256-+pNwXwdszxeNa77fSVCy9P0G3qzn+ubu+GjWxgSOXWA=",
+        "lastModified": 1736823854,
+        "narHash": "sha256-m4ex4tivP2Yjg8hs14+0jUjSIT6nEe+DsLF9w7ZQ6t8=",
         "path": "/Users/ccheek/nixos-config/locals.nix",
         "type": "path"
       },

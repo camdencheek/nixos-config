@@ -26,7 +26,7 @@ let
     # Productivity Tools
     "raycast"
     "bitwarden"
-    "bartender"
+    "jordanbaird-ice"
     "stats"
     "logseq"
     "notion-calendar"
