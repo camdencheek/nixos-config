@@ -12,6 +12,7 @@ path=(
 	$HOME/.bin
 	$HOME/scripts
 	$HOME/.cargo/bin
+	$HOME/.local/bin
 	$HOME/.sg
 	$HOME/Library/pnpm
 	/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
@@ -69,4 +70,4 @@ fre_chpwd() {
 typeset -gaU chpwd_functions
 chpwd_functions+=fre_chpwd
 
-. "$HOME/.nix-profile/share/asdf-vm/asdf.sh"
+eval "$(/Users/ccheek/.local/bin/mise activate zsh)"

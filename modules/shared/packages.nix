@@ -30,6 +30,11 @@ with pkgs;
   zip
   parallel
   git-open
+  mise
+  graphviz
+  github-cli
+	dtrx
+	zstd
 
   # Language tools
   nixd
@@ -86,7 +91,6 @@ with pkgs;
   # Sourcegraph-specific utilities
   # TODO: split this out
   gdk
-  asdf-vm
   findutils
   pcre
   bazelisk
