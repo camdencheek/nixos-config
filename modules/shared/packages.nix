@@ -18,6 +18,7 @@ with pkgs;
   btop
   coreutils
   direnv
+  podman
   eza
   fre
   fzf

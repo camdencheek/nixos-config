@@ -32,22 +32,22 @@ let
     "notion-calendar"
     "logi-options+"
 
-        # Browsers
-        "google-chrome"
-        "firefox@developer-edition"
-    ];
-    sourcegraph = [
-      "linear-linear"
-      "cleanshot"
-      "visual-studio-code"
-      "figma"
-      "notion"
-      "postgres-unofficial"
-    ];
-    personal = [
-      "steam"
-      "qbittorrent"
-    ];
+    # Browsers
+    "google-chrome"
+    "firefox@developer-edition"
+  ];
+  sourcegraph = [
+    "linear-linear"
+    "cleanshot"
+    "visual-studio-code"
+    "figma"
+    "notion"
+    "postgres-unofficial"
+  ];
+  personal = [
+    "steam"
+    "qbittorrent"
+  ];
 in
 lib.unique (
   default
