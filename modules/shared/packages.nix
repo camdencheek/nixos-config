@@ -33,8 +33,8 @@ with pkgs;
   mise
   graphviz
   github-cli
-	dtrx
-	zstd
+  dtrx
+  zstd
 
   # Language tools
   nixd
@@ -101,4 +101,6 @@ with pkgs;
   concurrently
   pspg
   buf
+  biome
+  buildifier
 ]
