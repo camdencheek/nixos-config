@@ -3,7 +3,6 @@
 let
   default = [
     # Development Tools
-    "homebrew/cask/docker"
     "zed"
     "wezterm"
     "ghostty"

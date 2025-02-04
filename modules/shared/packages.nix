@@ -18,6 +18,8 @@ with pkgs;
   btop
   coreutils
   direnv
+	docker
+	docker-compose
   podman
   eza
   fre
@@ -51,10 +53,6 @@ with pkgs;
   gnupg
   libfido2
   nss.tools # includes certutil
-
-  # Cloud-related tools and SDKs
-  docker
-  docker-compose
 
   # Media-related packages
   dejavu_fonts
