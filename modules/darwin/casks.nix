@@ -42,6 +42,7 @@ let
     "figma"
     "notion"
     "postgres-unofficial"
+    "perforce"
   ];
   personal = [
     "steam"

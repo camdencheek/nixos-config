@@ -18,8 +18,8 @@ with pkgs;
   btop
   coreutils
   direnv
-	docker
-	docker-compose
+  docker
+  docker-compose
   podman
   eza
   fre
