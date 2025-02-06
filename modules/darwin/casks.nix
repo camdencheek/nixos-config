@@ -30,10 +30,16 @@ let
     "logseq"
     "notion-calendar"
     "logi-options+"
+		"mullvadvpn"
+		"monitorcontrol"
+		"uhk-agent"
 
     # Browsers
     "google-chrome"
     "firefox@developer-edition"
+
+		# Other
+		"gimp"
   ];
   sourcegraph = [
     "linear-linear"
