@@ -17,6 +17,7 @@ let
     "slack"
     "telegram"
     "zoom"
+    "whatsapp"
 
     # Entertainment Tools
     "vlc"
@@ -30,16 +31,16 @@ let
     "logseq"
     "notion-calendar"
     "logi-options+"
-		"mullvadvpn"
-		"monitorcontrol"
-		"uhk-agent"
+    "mullvadvpn"
+    "monitorcontrol"
+    "uhk-agent"
 
     # Browsers
     "google-chrome"
     "firefox@developer-edition"
 
-		# Other
-		"gimp"
+    # Other
+    "gimp"
   ];
   sourcegraph = [
     "linear-linear"
