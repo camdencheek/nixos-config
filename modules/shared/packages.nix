@@ -86,6 +86,7 @@ with pkgs;
   # Python packages
   python3
   virtualenv
+	uv
 
   # Sourcegraph-specific utilities
   # TODO: split this out
@@ -102,4 +103,5 @@ with pkgs;
   buf
   biome
   buildifier
+	k9s
 ]

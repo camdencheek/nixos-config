@@ -24,6 +24,7 @@ let
     "spotify"
 
     # Productivity Tools
+		"claude"
     "raycast"
     "bitwarden"
     "jordanbaird-ice"
