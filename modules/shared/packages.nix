@@ -104,4 +104,7 @@ with pkgs;
   biome
   buildifier
 	k9s
+	kubectl
+	kubernetes-helm
+	terraform
 ]

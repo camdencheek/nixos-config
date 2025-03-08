@@ -41,6 +41,9 @@
 [branch]
 	sort = committerdate
 
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+
 [include]
     path = config_personal
 

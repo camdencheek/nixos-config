@@ -39,6 +39,7 @@ let
     # Browsers
     "google-chrome"
     "firefox@developer-edition"
+		"firefox"
 
     # Other
     "gimp"
