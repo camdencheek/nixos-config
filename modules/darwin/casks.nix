@@ -44,6 +44,7 @@ let
 
     # Other
     "gimp"
+		"tailscale"
   ];
   sourcegraph = [
     "linear-linear"

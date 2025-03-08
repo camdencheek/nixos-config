@@ -28,6 +28,7 @@ with pkgs;
   git
   killall
   neovim
+	nmap
   openssh
   sqlite
   wget
