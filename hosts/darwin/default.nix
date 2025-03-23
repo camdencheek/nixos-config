@@ -13,9 +13,6 @@
     agenix.darwinModules.default
   ];
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   # Setup user, packages, programs
   nix = {
     package = pkgs.nix;
@@ -32,7 +29,6 @@
     };
 
     gc = {
-      user = "root";
       automatic = true;
       interval = {
         Weekday = 0;
@@ -49,6 +45,9 @@
 
   # Turn off NIX_PATH warnings now that we're using flakes
   system.checks.verifyNixPath = false;
+
+  # Fix for nixbld group ID mismatch
+  ids.gids.nixbld = 350;
 
   # Load package configuration
   environment.systemPackages = (import ../../modules/darwin/packages.nix { inherit pkgs; });
