@@ -53,6 +53,9 @@
   # Load package configuration
   environment.systemPackages = (import ../../modules/darwin/packages.nix { inherit pkgs; });
 
+  # Enable Sourcegraph-specific configuration if necessary
+  my.sourcegraph.enable = locals.tags.work;
+
   launchd.user.agents.emacs.path = [ config.environment.systemPath ];
   launchd.user.agents.emacs.serviceConfig = {
     KeepAlive = true;

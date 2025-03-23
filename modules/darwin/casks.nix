@@ -37,6 +37,7 @@ let
     "mullvadvpn"
     "monitorcontrol"
     "uhk-agent"
+    "cleanshot"
 
     # Browsers
     "google-chrome"
@@ -47,14 +48,7 @@ let
     "gimp"
     "tailscale"
   ];
-  sourcegraph = [
-    "linear-linear"
-    "cleanshot"
-    "figma"
-    "notion"
-    "postgres-unofficial"
-    "perforce"
-  ];
+  # Sourcegraph-specific casks moved to sourcegraph.nix
   personal = [
     "steam"
     "qbittorrent"
@@ -62,6 +56,6 @@ let
 in
 lib.unique (
   default
-  ++ (lib.optionals locals.tags.work sourcegraph)
+  # Sourcegraph casks managed by sourcegraph.nix module
   ++ (lib.optionals locals.tags.personal personal)
 )

@@ -91,26 +91,5 @@ with pkgs;
   virtualenv
 	uv
 
-  # Sourcegraph-specific utilities
-  # TODO: split this out
-  gdk
-  findutils
-  pcre
-  bazelisk
-  bazel-watcher
-  postgresql
-  redis
-  caddy
-  concurrently
-  pspg
-  buf
-  biome
-  buildifier
-	k9s
-	kubectl
-	kubernetes-helm
-	terraform
-	bindfs
-	autoconf
-	sox
+  # Sourcegraph-specific utilities moved to sourcegraph.nix
 ]

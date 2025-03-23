@@ -87,6 +87,26 @@
         "create-keys" = mkApp "create-keys" system;
         "check-keys" = mkApp "check-keys" system;
         "rollback" = mkApp "rollback" system;
+        
+        # Sourcegraph config apps
+        "build-sourcegraph" = {
+          type = "app";
+          program = "${(nixpkgs.legacyPackages.${system}.writeScriptBin "build-sourcegraph" ''
+            #!/usr/bin/env bash
+            PATH=${nixpkgs.legacyPackages.${system}.git}/bin:$PATH
+            echo "Building Sourcegraph config for ${system}"
+            nix build ".#darwinSourcegraphConfigurations.${system}.system"
+          '')}/bin/build-sourcegraph";
+        };
+        "apply-sourcegraph" = {
+          type = "app";
+          program = "${(nixpkgs.legacyPackages.${system}.writeScriptBin "apply-sourcegraph" ''
+            #!/usr/bin/env bash
+            PATH=${nixpkgs.legacyPackages.${system}.git}/bin:$PATH
+            echo "Applying Sourcegraph config for ${system}"
+            $(nix build --no-link --print-out-paths ".#darwinSourcegraphConfigurations.${system}.system")/sw/bin/darwin-rebuild switch --flake ".#darwinSourcegraphConfigurations.${system}"
+          '')}/bin/apply-sourcegraph";
+        };
       };
     in
     {
@@ -99,6 +119,35 @@
           inherit system;
           specialArgs = inputs // {
             inherit locals;
+          };
+          modules = [
+            home-manager.darwinModules.home-manager
+            nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                user = locals.username;
+                enable = true;
+                taps = {
+                  "homebrew/homebrew-core" = homebrew-core;
+                  "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-bundle" = homebrew-bundle;
+                };
+                mutableTaps = false;
+                autoMigrate = true;
+              };
+            }
+            ./hosts/darwin
+          ];
+        }
+      );
+      
+      # Specialized configurations
+      darwinSourcegraphConfigurations = nixpkgs.lib.genAttrs darwinSystems (
+        system:
+        darwin.lib.darwinSystem {
+          inherit system;
+          specialArgs = inputs // {
+            locals = locals // { sourcegraph = true; };
           };
           modules = [
             home-manager.darwinModules.home-manager

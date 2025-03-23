@@ -3,6 +3,7 @@
 {
   imports = [
     ./home-manager.nix
+    ./sourcegraph.nix
   ];
   
   nixpkgs = {

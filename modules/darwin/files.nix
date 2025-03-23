@@ -28,12 +28,5 @@
     text = builtins.readFile ./config/psqlrc;
   };
   
-  # Sourcegraph-specific bazel wrapper
-  ".bin/bazel" = {
-    text = ''
-      #!/bin/sh
-      exec bazelisk "$@"
-    '' ;
-    executable = true;
-  };
+  # Bazel wrapper moved to sourcegraph.nix
 }
