@@ -11,6 +11,7 @@ let
     "ollama"
     "proxyman"
     "tuple"
+		"macfuse"
 
     # Communication Tools
     "discord"

@@ -48,6 +48,7 @@ in
       gco = "git checkout";
       gs = "git status -sb";
       gac = "git add -A && git commit -m";
+      gcl = "git clean -d -f";
     };
     history = {
       append = true;

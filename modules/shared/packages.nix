@@ -5,6 +5,7 @@ let
     with pkgs.google-cloud-sdk.components;
     [
       gke-gcloud-auth-plugin
+			cloud-sql-proxy
     ]
   );
 in
@@ -38,6 +39,7 @@ with pkgs;
   github-cli
   dtrx
   zstd
+	graphite-cli
 
   # Language tools
   nixd
@@ -107,4 +109,7 @@ with pkgs;
 	kubectl
 	kubernetes-helm
 	terraform
+	bindfs
+	autoconf
+	sox
 ]
