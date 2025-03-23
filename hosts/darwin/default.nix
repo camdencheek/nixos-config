@@ -9,8 +9,7 @@
 {
   imports = [
     ../../modules/darwin/secrets.nix
-    ../../modules/darwin/home-manager.nix
-    ../../modules/shared
+    ../../modules/darwin
     agenix.darwinModules.default
   ];
 
@@ -51,8 +50,8 @@
   # Turn off NIX_PATH warnings now that we're using flakes
   system.checks.verifyNixPath = false;
 
-  # Load configuration that is shared across systems
-  environment.systemPackages = (import ../../modules/shared/packages.nix { inherit pkgs; });
+  # Load package configuration
+  environment.systemPackages = (import ../../modules/darwin/packages.nix { inherit pkgs; });
 
   launchd.user.agents.emacs.path = [ config.environment.systemPath ];
   launchd.user.agents.emacs.serviceConfig = {
