@@ -11,7 +11,8 @@ let
     "ollama"
     "proxyman"
     "tuple"
-		"macfuse"
+    "macfuse"
+    "visual-studio-code"
 
     # Communication Tools
     "discord"
@@ -25,7 +26,7 @@ let
     "spotify"
 
     # Productivity Tools
-		"claude"
+    "claude"
     "raycast"
     "bitwarden"
     "jordanbaird-ice"
@@ -40,16 +41,15 @@ let
     # Browsers
     "google-chrome"
     "firefox@developer-edition"
-		"firefox"
+    "firefox"
 
     # Other
     "gimp"
-		"tailscale"
+    "tailscale"
   ];
   sourcegraph = [
     "linear-linear"
     "cleanshot"
-    "visual-studio-code"
     "figma"
     "notion"
     "postgres-unofficial"

@@ -1,5 +1,5 @@
 {
-  description = "Starter Configuration with secrets for MacOS and NixOS";
+  description = "Nix config for Camden's macOS machines";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
@@ -43,15 +43,11 @@
     }@inputs:
     let
       locals = import localConfig { };
-      linuxSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
       darwinSystems = [
         "aarch64-darwin"
         "x86_64-darwin"
       ];
-      forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
+      forAllSystems = f: nixpkgs.lib.genAttrs darwinSystems f;
       devShell =
         system:
         let
@@ -83,15 +79,6 @@
           '')
         }/bin/${scriptName}";
       };
-      mkLinuxApps = system: {
-        "apply" = mkApp "apply" system;
-        "build-switch" = mkApp "build-switch" system;
-        "copy-keys" = mkApp "copy-keys" system;
-        "create-keys" = mkApp "create-keys" system;
-        "check-keys" = mkApp "check-keys" system;
-        "install" = mkApp "install" system;
-        "install-with-secrets" = mkApp "install-with-secrets" system;
-      };
       mkDarwinApps = system: {
         "apply" = mkApp "apply" system;
         "build" = mkApp "build" system;
@@ -104,9 +91,7 @@
     in
     {
       devShells = forAllSystems devShell;
-      apps =
-        nixpkgs.lib.genAttrs linuxSystems mkLinuxApps
-        // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
+      apps = nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
 
       darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (
         system:
@@ -132,27 +117,6 @@
               };
             }
             ./hosts/darwin
-          ];
-        }
-      );
-
-      nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (
-        system:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = inputs // {
-            inherit locals;
-          };
-          modules = [
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.${locals.username} = import ./modules/nixos/home-manager.nix;
-              };
-            }
-            ./hosts/nixos
           ];
         }
       );
