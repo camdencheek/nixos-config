@@ -37,9 +37,7 @@ in
             };
           };
         });
-      default = [
-        { path = "/Applications/Safari.app"; }
-      ];
+      default = [];
     };
   };
 

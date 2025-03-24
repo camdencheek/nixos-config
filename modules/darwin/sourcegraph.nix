@@ -1,16 +1,24 @@
-{ config, lib, pkgs, locals, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  locals,
+  ...
+}:
 
 with lib;
 
 let
   cfg = config.my.sourcegraph;
   gdk = pkgs.google-cloud-sdk.withExtraComponents (
-    with pkgs.google-cloud-sdk.components; [
+    with pkgs.google-cloud-sdk.components;
+    [
       gke-gcloud-auth-plugin
       cloud-sql-proxy
     ]
   );
-in {
+in
+{
   options.my.sourcegraph = {
     enable = mkEnableOption "Enable Sourcegraph-specific configurations";
   };
@@ -49,6 +57,7 @@ in {
       "notion"
       "postgres-unofficial"
       "perforce"
+      "pgadmin4"
     ];
 
     # Sourcegraph-specific files and configurations
@@ -59,10 +68,10 @@ in {
           text = ''
             #!/bin/sh
             exec bazelisk "$@"
-          '' ;
+          '';
           executable = true;
         };
-        
+
         # Git config for work
         ".config/git/config_work" = {
           text = ''
@@ -71,7 +80,7 @@ in {
           '';
         };
       };
-      
+
       # Add git configuration for Sourcegraph repositories
       programs.git = {
         includes = [
