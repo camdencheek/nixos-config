@@ -57,7 +57,7 @@ in
       "notion"
       "postgres-unofficial"
       "perforce"
-      "pgadmin4"
+      "dbeaver-community"
     ];
 
     # Sourcegraph-specific files and configurations
