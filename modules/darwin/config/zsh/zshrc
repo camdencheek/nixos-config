@@ -65,6 +65,8 @@ export FZF_CTRL_T_COMMAND='fre --sorted'
 export FZF_CTRL_T_OPTS='--tiebreak=index --no-sort --bind tab:down --bind shift-tab:up'
 source "$XDG_CONFIG_HOME/zsh/fzf-key-bindings.zsh"
 
+eval "$(atuin init zsh)"
+
 # Update fre on directory change
 fre_chpwd() {
     fre --add "$(realpath "$(pwd)")"
@@ -80,4 +82,3 @@ if command -v mise &> /dev/null; then
 fi
 
 export SG_SKIP_AUTO_UPDATE=true
-

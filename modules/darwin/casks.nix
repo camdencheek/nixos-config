@@ -38,6 +38,7 @@ let
     "monitorcontrol"
     "uhk-agent"
     "cleanshot"
+    "superwhisper"
 
     # Browsers
     "google-chrome"

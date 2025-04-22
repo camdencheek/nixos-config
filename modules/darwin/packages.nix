@@ -5,7 +5,7 @@ let
     with pkgs.google-cloud-sdk.components;
     [
       gke-gcloud-auth-plugin
-			cloud-sql-proxy
+      cloud-sql-proxy
     ]
   );
 in
@@ -13,6 +13,7 @@ with pkgs;
 [
   # General packages for development and system management
   aspell
+  atuin
   aspellDicts.en
   bash-completion
   bat
@@ -28,7 +29,7 @@ with pkgs;
   git
   killall
   neovim
-	nmap
+  nmap
   openssh
   sqlite
   wget
@@ -40,7 +41,7 @@ with pkgs;
   github-cli
   dtrx
   zstd
-	graphite-cli
+  graphite-cli
 
   # Language tools
   nixd
@@ -89,7 +90,7 @@ with pkgs;
   # Python packages
   python3
   virtualenv
-	uv
+  uv
 
   # Sourcegraph-specific utilities moved to sourcegraph.nix
 ]

@@ -14,6 +14,11 @@
     recursive = true;
   };
 
+  ".config/atuin/config.toml" = {
+    source = ./config/atuin.toml;
+    recursive = true;
+  };
+
   ".config/zsh" = {
     source = ./config/zsh;
     recursive = true;
@@ -27,6 +32,6 @@
   ".psqlrc" = {
     text = builtins.readFile ./config/psqlrc;
   };
-  
+
   # Bazel wrapper moved to sourcegraph.nix
 }
