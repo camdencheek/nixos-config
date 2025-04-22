@@ -78,3 +78,6 @@ export DOCKER_HOST=unix://$(podman machine inspect --format '{{.ConnectionInfo.P
 if command -v mise &> /dev/null; then
 	eval "$(mise activate zsh)"
 fi
+
+export SG_SKIP_AUTO_UPDATE=true
+
