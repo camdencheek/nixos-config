@@ -30,6 +30,7 @@ with pkgs;
   killall
   neovim
   nmap
+  ngrok
   openssh
   sqlite
   wget
