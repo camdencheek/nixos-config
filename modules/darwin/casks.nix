@@ -12,6 +12,7 @@ let
     "proxyman"
     "tuple"
     "macfuse"
+    "windsurf"
     "visual-studio-code"
 
     # Communication Tools
@@ -46,6 +47,7 @@ let
     "firefox"
 
     # Other
+    "betterdisplay"
     "gimp"
     "tailscale"
   ];

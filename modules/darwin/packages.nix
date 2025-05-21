@@ -41,6 +41,7 @@ with pkgs;
   graphviz
   github-cli
   dtrx
+  yq
   zstd
   graphite-cli
 
