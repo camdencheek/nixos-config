@@ -71,8 +71,8 @@ eval "$(atuin init zsh)"
 fre_chpwd() {
     fre --add "$(realpath "$(pwd)")"
 }
-typeset -gaU chpwd_functions
-chpwd_functions+=fre_chpwd
+# typeset -gaU chpwd_functions
+# chpwd_functions+=fre_chpwd
 
 # Use podman
 export DOCKER_HOST=unix://$(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}')
