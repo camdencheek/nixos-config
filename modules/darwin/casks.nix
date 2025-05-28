@@ -12,7 +12,6 @@ let
     "proxyman"
     "tuple"
     "macfuse"
-    "windsurf"
     "visual-studio-code"
 
     # Communication Tools
