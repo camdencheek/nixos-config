@@ -13,8 +13,8 @@ with pkgs;
 [
   # General packages for development and system management
   aspell
-  atuin
   aspellDicts.en
+  atuin
   bash-completion
   bat
   btop
@@ -22,28 +22,29 @@ with pkgs;
   direnv
   docker
   docker-compose
-  podman
+  dtrx
   eza
   fre
   fzf
   git
+  git-open
+  github-cli
+  graphite-cli
+  graphviz
+  jujutsu
   killall
+  mise
   neovim
-  nmap
   ngrok
+  nmap
   openssh
+  parallel
+  podman
   sqlite
   wget
-  zip
-  parallel
-  git-open
-  mise
-  graphviz
-  github-cli
-  dtrx
   yq
+  zip
   zstd
-  graphite-cli
 
   # Language tools
   nixd

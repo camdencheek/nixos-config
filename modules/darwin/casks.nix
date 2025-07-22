@@ -8,9 +8,7 @@ let
     "ghostty"
     "bruno"
     "burp-suite"
-    "ollama"
     "proxyman"
-    "tuple"
     "macfuse"
     "visual-studio-code"
 
@@ -39,6 +37,7 @@ let
     "uhk-agent"
     "cleanshot"
     "superwhisper"
+    "wireshark"
 
     # Browsers
     "google-chrome"
