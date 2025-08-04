@@ -46,6 +46,7 @@ with pkgs;
   zip
   zstd
   jjui
+	p7zip
 
   # Language tools
   nixd

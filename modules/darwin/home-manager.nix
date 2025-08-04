@@ -33,7 +33,12 @@ in
   home-manager = {
     useGlobalPkgs = true;
     users.${user} =
-      { pkgs, config, lib, ... }:
+      {
+        pkgs,
+        config,
+        lib,
+        ...
+      }:
       {
         home = {
           enableNixpkgsReleaseCheck = false;
@@ -41,7 +46,7 @@ in
           file = files;
           stateVersion = "23.11";
         };
-        
+
         programs = {
           # Documented here: https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
           zsh = {
@@ -107,7 +112,7 @@ in
             };
           };
         };
-        
+
         # Marked broken Oct 20, 2022 check later to remove this
         # https://github.com/nix-community/home-manager/issues/3344
         manual.manpages.enable = false;

@@ -38,7 +38,8 @@ let
     "uhk-agent"
     "cleanshot"
     "superwhisper"
-    "wireshark"
+    "betterdisplay"
+    "localsend"
 
     # Browsers
     "google-chrome"
@@ -48,12 +49,14 @@ let
     # Other
     "betterdisplay"
     "gimp"
+    "inkscape"
     "tailscale"
   ];
   # Sourcegraph-specific casks moved to sourcegraph.nix
   personal = [
     "steam"
     "qbittorrent"
+		"todoist"
   ];
 in
 lib.unique (
