@@ -1,6 +1,6 @@
 [user]
 	name = Camden Cheek
-	signingkey = AA3B82D30534D13365809E56595BFFE3A04E48B9
+	signingkey = ~/.ssh/id_github.pub
 
 [init]
 	defaultBranch = main
@@ -8,8 +8,11 @@
 [http]
 	cookiefile = /Users/ccheek/.gitcookies
 
-# [commit]
-# 	 gpgSign = true
+[commit]
+    gpgSign = true
+
+[gpg]
+    format = ssh
 
 [pull]
 	rebase = true

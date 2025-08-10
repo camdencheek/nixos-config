@@ -29,7 +29,6 @@ with pkgs;
   git
   git-open
   github-cli
-  graphite-cli
   graphviz
   jujutsu
   killall
@@ -40,11 +39,13 @@ with pkgs;
   openssh
   parallel
   podman
+  rbw
   sqlite
   wget
   yq
   zip
   zstd
+  jjui
 
   # Language tools
   nixd
@@ -53,6 +54,8 @@ with pkgs;
   go
   gopls
   rustup
+  nodejs_24
+  bun
 
   # Encryption and security tools
   age
@@ -71,11 +74,8 @@ with pkgs;
   noto-fonts-emoji
   intel-one-mono
   meslo-lgs-nf
+  pinentry-tty
 
-  # Node.js development tools
-  nodePackages.npm # globally install npm
-  nodePackages.prettier
-  nodejs
 
   # Text and terminal utilities
   htop

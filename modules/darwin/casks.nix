@@ -18,6 +18,7 @@ let
     "telegram"
     "zoom"
     "whatsapp"
+    "kitty"
 
     # Entertainment Tools
     "vlc"
