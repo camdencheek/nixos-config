@@ -4,5 +4,3 @@ font-size = 14
 window-padding-x = 8
 window-padding-y = 8
 macos-titlebar-style = tabs
-cursor-style = beam
-confirm-close-surface = false
