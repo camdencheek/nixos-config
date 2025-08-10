@@ -1,14 +1,5 @@
 { pkgs }:
 
-let
-  gdk = pkgs.google-cloud-sdk.withExtraComponents (
-    with pkgs.google-cloud-sdk.components;
-    [
-      gke-gcloud-auth-plugin
-      cloud-sql-proxy
-    ]
-  );
-in
 with pkgs;
 [
   # General packages for development and system management
@@ -48,7 +39,6 @@ with pkgs;
   yq
   zip
   zstd
-  jjui
 	p7zip
 
   # Language tools

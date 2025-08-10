@@ -25,7 +25,8 @@ in
   homebrew = {
     enable = true;
     onActivation = {
-      cleanup = "uninstall";
+      cleanup = "none"; # Disable cleanup to prevent sudo prompts
+      upgrade = false; # Skip automatic upgrades to speed up rebuilds
     };
     casks = pkgs.callPackage ./casks.nix { inherit locals; };
   };
@@ -71,7 +72,7 @@ in
               fi
             '' + builtins.readFile ./config/zsh/zshrc;
             autocd = false;
-            dotDir = ".config/zsh";
+            dotDir = "${config.xdg.configHome}/zsh";
             defaultKeymap = "emacs";
             shellAliases = {
               ls = "eza";
