@@ -30,9 +30,11 @@ with pkgs;
   git-open
   github-cli
   graphviz
+  jjui
   jujutsu
   killall
   mise
+  # mullvad-vpn
   neovim
   ngrok
   nmap
@@ -41,6 +43,7 @@ with pkgs;
   podman
   rbw
   sqlite
+  tailscale
   wget
   yq
   zip
@@ -57,6 +60,12 @@ with pkgs;
   rustup
   nodejs_24
   bun
+  firefox-devedition
+  vlc-bin
+  spotify
+  telegram-desktop
+  vscode
+
 
   # Encryption and security tools
   age
@@ -95,6 +104,4 @@ with pkgs;
   python3
   virtualenv
   uv
-
-  # Sourcegraph-specific utilities moved to sourcegraph.nix
 ]

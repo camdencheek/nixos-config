@@ -2,49 +2,25 @@
 
 let
   default = [
-    # Development Tools
-    "zed"
-    "wezterm"
-    "bruno"
-    "burp-suite"
-    "proxyman"
-    "macfuse"
-    "visual-studio-code"
-
     # Communication Tools
     "discord"
     "slack"
-    "telegram"
     "zoom"
     "whatsapp"
     "kitty"
     "ghostty"
 
-    # Entertainment Tools
-    "vlc"
-    "spotify"
-
     # Productivity Tools
-    "claude"
-    "raycast"
     "bitwarden"
     "jordanbaird-ice"
     "stats"
     "logseq"
     "notion-calendar"
     "logi-options+"
-    "mullvadvpn"
     "monitorcontrol"
-    "uhk-agent"
     "cleanshot"
     "superwhisper"
-    "betterdisplay"
-    "localsend"
-
-    # Browsers
-    "google-chrome"
-    "firefox@developer-edition"
-    "firefox"
+		"raycast"
 
     # Other
     "betterdisplay"
