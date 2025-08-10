@@ -59,13 +59,12 @@ in
               }
             ];
 
-            initExtraFirst = ''
+            initContent = ''
               if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
                 . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
                 . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
               fi
-            '';
-            initExtra = builtins.readFile ./config/zsh/zshrc;
+            '' + builtins.readFile ./config/zsh/zshrc;
             autocd = false;
             dotDir = ".config/zsh";
             defaultKeymap = "emacs";

@@ -30,8 +30,12 @@
   };
 
   ".psqlrc" = {
-    text = builtins.readFile ./config/psqlrc;
+  text = builtins.readFile ./config/psqlrc;
   };
 
+  ".config/ghostty/config" = {
+    text = builtins.readFile ./config/ghostty/config;
+  };
+ 
   # Bazel wrapper moved to sourcegraph.nix
 }

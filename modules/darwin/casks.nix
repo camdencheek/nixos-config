@@ -5,7 +5,6 @@ let
     # Development Tools
     "zed"
     "wezterm"
-    "ghostty"
     "bruno"
     "burp-suite"
     "proxyman"
@@ -19,6 +18,7 @@ let
     "zoom"
     "whatsapp"
     "kitty"
+    "ghostty"
 
     # Entertainment Tools
     "vlc"
