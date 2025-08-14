@@ -26,6 +26,7 @@ let
     "betterdisplay"
     "gimp"
     "inkscape"
+    "tailscale"
   ];
   # Sourcegraph-specific casks moved to sourcegraph.nix
   personal = [

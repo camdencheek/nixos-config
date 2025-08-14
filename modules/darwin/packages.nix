@@ -34,7 +34,6 @@ with pkgs;
   podman
   rbw
   sqlite
-  tailscale
   wget
   yq
   zip
