@@ -21,6 +21,7 @@ let
     "cleanshot"
     "superwhisper"
 		"raycast"
+    "firefox@developer-edition"
 
     # Other
     "betterdisplay"
@@ -32,7 +33,6 @@ let
   personal = [
     "steam"
     "qbittorrent"
-		"todoist"
   ];
 in
 lib.unique (

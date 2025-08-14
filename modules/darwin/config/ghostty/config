@@ -1,6 +1,4 @@
-# Ghostty config managed by Nix
-font-family = JetBrains Mono
-font-size = 14
+font-family = Hack
 window-padding-x = 8
 window-padding-y = 8
 macos-titlebar-style = tabs
@@ -12,3 +10,5 @@ keybind = ctrl+h=goto_split:left
 keybind = ctrl+j=goto_split:down
 keybind = ctrl+k=goto_split:up
 keybind = ctrl+l=goto_split:right
+theme = "GruvboxDark"
+command = "login -fpql ccheek /bin/zsh"

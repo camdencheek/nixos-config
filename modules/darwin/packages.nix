@@ -49,7 +49,6 @@ with pkgs;
   rustup
   nodejs_24
   bun
-  firefox-devedition
   vlc-bin
   spotify
   telegram-desktop
