@@ -33,7 +33,7 @@
   };
 
   ".config/ghostty/config" = {
-    text = builtins.readFile ./config/ghostty/config;
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/darwin/config/ghostty/config";
   };
  
   # Bazel wrapper moved to sourcegraph.nix
