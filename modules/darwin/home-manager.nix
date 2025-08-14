@@ -7,7 +7,7 @@
 
 let
   user = locals.username;
-  files = import ./files.nix { inherit config pkgs; };
+  files = import ./files.nix;
 in
 {
   imports = [
@@ -44,7 +44,7 @@ in
         home = {
           enableNixpkgsReleaseCheck = false;
           packages = pkgs.callPackage ./packages.nix { };
-          file = files;
+          file = files { inherit config lib; };
           stateVersion = "23.11";
         };
 

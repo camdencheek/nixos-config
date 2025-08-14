@@ -1,4 +1,4 @@
-{ ... }:
+{ config, lib, ... }:
 
 {
   ".config/wezterm/wezterm.lua" = {
@@ -10,8 +10,7 @@
   };
 
   ".config/nvim" = {
-    source = ./config/nvim;
-    recursive = true;
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/darwin/config/nvim";
   };
 
   ".config/atuin/config.toml" = {
@@ -19,10 +18,10 @@
     recursive = true;
   };
 
-  ".config/zsh" = {
-    source = ./config/zsh;
-    recursive = true;
+  ".config/zsh/fzf-key-bindings.zsh" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/darwin/config/zsh/fzf-key-bindings.zsh";
   };
+
 
   ".config/git" = {
     source = ./config/git;
