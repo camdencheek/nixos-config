@@ -76,6 +76,7 @@ in
             defaultKeymap = "emacs";
             shellAliases = {
               ls = "eza";
+              amp = "pnpx @sourcegraph/amp";
 
               # Git aliases
               gap = "git add --patch";
