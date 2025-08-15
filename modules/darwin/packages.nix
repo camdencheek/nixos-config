@@ -3,6 +3,8 @@
 with pkgs;
 [
   # General packages for development and system management
+	p7zip
+  # mullvad-vpn
   aspell
   aspellDicts.en
   atuin
@@ -24,8 +26,9 @@ with pkgs;
   jjui
   jujutsu
   killall
+  luarocks
+  luajit
   mise
-  # mullvad-vpn
   neovim
   ngrok
   nmap
@@ -38,7 +41,6 @@ with pkgs;
   yq
   zip
   zstd
-	p7zip
 
   # Language tools
   nixd

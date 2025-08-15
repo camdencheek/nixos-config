@@ -1,3 +1,4 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
-vim.cmd("colorscheme gruvbox")
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")

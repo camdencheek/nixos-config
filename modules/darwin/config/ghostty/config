@@ -1,8 +1,12 @@
 font-family = Hack
 font-size = 12
+adjust-cell-height = 2
 window-padding-x = 8
 window-padding-y = 4
 macos-titlebar-style = tabs
+cursor-style = block
+window-inherit-working-directory = true
+shell-integration = zsh
 
 keybind = cmd+enter=ignore
 keybind = ctrl+s>\=new_split:right

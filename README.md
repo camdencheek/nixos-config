@@ -3,10 +3,13 @@
 ## Basic Commands
 
 ```bash
+# Update local inputs
+nix flake update localConfig
+
 # Build configuration
 nix build ".#darwinConfigurations.aarch64-darwin.system"
 
-# Switch to new configuration  
+# Switch to new configuration
 sudo darwin-rebuild switch --flake ".#aarch64-darwin"
 
 # Build and switch for Sourcegraph config
