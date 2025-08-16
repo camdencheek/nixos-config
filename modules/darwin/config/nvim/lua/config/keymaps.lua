@@ -25,3 +25,8 @@ vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' })
 vim.keymap.set('n', 'gR', vim.lsp.buf.references, { desc = 'Find references' })
 vim.keymap.set('n', 'g?', vim.diagnostic.open_float, { desc = 'Show diagnostics' })
 vim.keymap.set('n', '<D-.>', vim.lsp.buf.code_action, { desc = 'LSP code actions' })
+
+-- Live grep (fzf-lua)
+vim.keymap.set('n', '<leader>fg', function()
+  require('fzf-lua').live_grep()
+end, { desc = 'Live grep (fzf-lua)' })

@@ -11,9 +11,13 @@ shell-integration = zsh
 keybind = cmd+enter=ignore
 keybind = ctrl+s>\=new_split:right
 keybind = ctrl+s>-=new_split:down
+keybind = ctrl+s>c=new_tab
 keybind = ctrl+h=goto_split:left
 keybind = ctrl+j=goto_split:down
 keybind = ctrl+k=goto_split:up
 keybind = ctrl+l=goto_split:right
 theme = "GruvboxDark"
 command = "login -fpql ccheek /bin/zsh"
+
+shell-integration-features = no-title
+resize-overlay = never

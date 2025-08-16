@@ -18,32 +18,32 @@ return {
 	{ "echasnovski/mini.comment", version = "*", opts = {} },
 	{ "echasnovski/mini.jump", version = "*", opts = {} },
 	{ "echasnovski/mini.pairs", version = "*", opts = {} },
-	{ 
-		"echasnovski/mini.statusline", 
-		version = "*", 
-		opts = { 
+	{
+		"echasnovski/mini.statusline",
+		version = "*",
+		opts = {
 			use_icons = false,
 			content = {
 				active = function()
-					local mode, mode_hl = require('mini.statusline').section_mode({ trunc_width = 120 })
-					local git = require('mini.statusline').section_git({ trunc_width = 40 })
-					local diff = require('mini.statusline').section_diff({ trunc_width = 75 })
-					local diagnostics = require('mini.statusline').section_diagnostics({ trunc_width = 75 })
-					local filename = require('mini.statusline').section_filename({ trunc_width = 140 })
-					local location = require('mini.statusline').section_location({ trunc_width = 75 })
-					local search = require('mini.statusline').section_searchcount({ trunc_width = 75 })
+					local mode, mode_hl = require("mini.statusline").section_mode({ trunc_width = 120 })
+					local git = require("mini.statusline").section_git({ trunc_width = 40 })
+					local diff = require("mini.statusline").section_diff({ trunc_width = 75 })
+					local diagnostics = require("mini.statusline").section_diagnostics({ trunc_width = 75 })
+					local filename = require("mini.statusline").section_filename({ trunc_width = 140 })
+					local location = require("mini.statusline").section_location({ trunc_width = 75 })
+					local search = require("mini.statusline").section_searchcount({ trunc_width = 75 })
 
-					return require('mini.statusline').combine_groups({
+					return require("mini.statusline").combine_groups({
 						{ hl = mode_hl, strings = { mode } },
-						{ hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics } },
-						'%<',
-						{ hl = 'MiniStatuslineFilename', strings = { filename } },
-						'%=',
+						{ hl = "MiniStatuslineDevinfo", strings = { git, diff, diagnostics } },
+						"%<",
+						{ hl = "MiniStatuslineFilename", strings = { filename } },
+						"%=",
 						{ hl = mode_hl, strings = { search, location } },
 					})
 				end,
-			}
-		} 
+			},
+		},
 	},
 	{ "echasnovski/mini.surround", version = "*", opts = {} },
 	{ "echasnovski/mini.splitjoin", version = "*", opts = {} },
@@ -91,4 +91,5 @@ return {
 		opts = {},
 		dependencies = { { "mason-org/mason.nvim", opts = {} }, "neovim/nvim-lspconfig" },
 	},
+	{ "sindrets/diffview.nvim", opts = {} },
 }
