@@ -50,6 +50,7 @@ with pkgs;
   gopls
   rustup
   nodejs_24
+  pnpm
   bun
   vlc-bin
   spotify

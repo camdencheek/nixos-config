@@ -67,11 +67,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751313918,
-        "narHash": "sha256-HsJM3XLa43WpG+665aGEh8iS8AfEwOIQWk3Mke3e7nk=",
+        "lastModified": 1755275010,
+        "narHash": "sha256-lEApCoWUEWh0Ifc3k1JdVjpMtFFXeL2gG1qvBnoRc2I=",
         "owner": "LnL7",
         "repo": "nix-darwin",
-        "rev": "e04a388232d9a6ba56967ce5b53a8a6f713cdfcf",
+        "rev": "7220b01d679e93ede8d7b25d6f392855b81dd475",
         "type": "github"
       },
       "original": {
@@ -107,11 +107,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1755229570,
-        "narHash": "sha256-soZegto0xXzG2zYlu/zjknDHv0Z7tRS5EQs+Z/VRTBg=",
+        "lastModified": 1755313937,
+        "narHash": "sha256-pQb7bNcolxYGRiylUCrTddiF+qW2wsUiM9+eRIDUrVU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "11626a4383b458f8dc5ea3237eaa04e8ab1912f3",
+        "rev": "2a749f4790a14f7168be67cdf6e548ef1c944e10",
         "type": "github"
       },
       "original": {
@@ -139,11 +139,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1755265812,
-        "narHash": "sha256-71SXTk7q1Pf8Z7OhWRQQ4hCnAmko9DknEIeO7MkdSQo=",
+        "lastModified": 1755363579,
+        "narHash": "sha256-EbaVz2Ky94YR/tV74wSqpzE6A9F38x7nzvMSEBWBMI4=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "c8da4ffcec72de73ca4b8e641f336929d3c54101",
+        "rev": "d2d4d62c4b32b98c0d13b02c265294e3a6039999",
         "type": "github"
       },
       "original": {
@@ -155,11 +155,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1755264461,
-        "narHash": "sha256-Sh4LHXi8vobnCbFphzNlm2PSod1nWudjpgv09Xd2N40=",
+        "lastModified": 1755366194,
+        "narHash": "sha256-Yx29Lye5FLeGXEoK/7XvmNjCL066R4OyCtUwSvvHlTw=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "f794e086ce04f186217b3883838f041d1f888a0d",
+        "rev": "ec5db59c50e7e3c840b3eb54925b66939f262ac5",
         "type": "github"
       },
       "original": {
@@ -171,8 +171,8 @@
     "localConfig": {
       "flake": false,
       "locked": {
-        "lastModified": 1735581483,
-        "narHash": "sha256-+pNwXwdszxeNa77fSVCy9P0G3qzn+ubu+GjWxgSOXWA=",
+        "lastModified": 1742765503,
+        "narHash": "sha256-o4HKC+Guxud/9ZkZ135g4yf2AXJcW6voAjPVbXxHMYE=",
         "path": "/Users/ccheek/nixos-config/locals.nix",
         "type": "path"
       },
