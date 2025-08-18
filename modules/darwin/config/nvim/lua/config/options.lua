@@ -12,5 +12,5 @@ vim.opt.wrap = false
 -- Auto-start server for remote connections
 local pipepath = vim.fn.stdpath("cache") .. "/server.pipe"
 if not vim.loop.fs_stat(pipepath) then
-  vim.fn.serverstart(pipepath)
+	vim.fn.serverstart(pipepath)
 end
