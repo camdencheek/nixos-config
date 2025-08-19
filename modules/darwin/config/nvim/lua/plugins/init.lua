@@ -2,7 +2,34 @@ return {
 	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	{ "MunifTanjim/nui.nvim", lazy = true },
-	{ "neovim/nvim-lspconfig" },
+	{
+		"saghen/blink.cmp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		version = "1.*",
+		opts = {
+			keymap = { preset = "enter" },
+			appearance = {
+				nerd_font_variant = "mono",
+			},
+			completion = { documentation = { auto_show = false } },
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+			fuzzy = { implementation = "prefer_rust_with_warning" },
+		},
+		opts_extend = { "sources.default" },
+	},
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = { "saghen/blink.cmp" },
+		config = function()
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
+			local lspconfig = require("lspconfig")
+
+			-- Add your LSP servers here with the blink.cmp capabilities
+			-- Example: lspconfig.lua_ls.setup({ capabilities = capabilities })
+		end,
+	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
@@ -18,6 +45,7 @@ return {
 	{ "echasnovski/mini.comment", version = "*", opts = {} },
 	{ "echasnovski/mini.jump", version = "*", opts = {} },
 	{ "echasnovski/mini.pairs", version = "*", opts = {} },
+	{ "echasnovski/mini.git", version = "*", opts = {} },
 	{
 		"echasnovski/mini.statusline",
 		version = "*",
@@ -56,10 +84,21 @@ return {
 		config = function()
 			local configs = require("nvim-treesitter.configs")
 			configs.setup({
-				ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
+				ensure_installed = {
+					"c",
+					"lua",
+					"vim",
+					"vimdoc",
+					"query",
+					"javascript",
+					"typescript",
+					"svelte",
+					"html",
+				},
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
+				fold = { enable = true },
 			})
 		end,
 	},
@@ -68,6 +107,15 @@ return {
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				json = { "prettier" },
+				markdown = { "prettier" },
+				yaml = { "prettier" },
+				svelte = { "prettier" },
+				css = { "prettier" },
+				scss = { "prettier" },
+				html = { "prettier" },
 			},
 
 			format_on_save = {
@@ -83,7 +131,15 @@ return {
 		-- dependencies = { "nvim-tree/nvim-web-devicons" },
 		-- or if using mini.icons/mini.nvim
 		dependencies = { "echasnovski/mini.icons" },
-		opts = {},
+		config = function()
+			require("fzf-lua").setup({
+				actions = {
+					fzf = {
+						["ctrl-q"] = { fn = require("fzf-lua").actions.file_sel_to_qf, prefix = "select-all" },
+					},
+				},
+			})
+		end,
 	},
 	{ "mason-org/mason.nvim", opts = {} },
 	{

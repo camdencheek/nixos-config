@@ -9,6 +9,13 @@ vim.opt.shiftwidth = 3
 vim.opt.softtabstop = 3
 vim.opt.wrap = false
 
+-- Enable treesitter-based folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99 -- Start with all folds open
+vim.opt.foldlevelstart = 99
+
 -- Auto-start server for remote connections
 local pipepath = vim.fn.stdpath("cache") .. "/server.pipe"
 if not vim.loop.fs_stat(pipepath) then
