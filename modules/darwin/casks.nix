@@ -20,8 +20,9 @@ let
     "monitorcontrol"
     "cleanshot"
     "superwhisper"
-		"raycast"
+	 "raycast"
     "firefox@developer-edition"
+	 "obsidian"
 
     # Other
     "betterdisplay"

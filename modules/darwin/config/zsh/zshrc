@@ -82,10 +82,10 @@ fre_chpwd() {
 	INSERT INTO frecency (name, t_unit_frecency)
 	VALUES (:name, :t_visit)
 	ON CONFLICT (name) DO UPDATE SET
-		t_unit_frecency = CASE 
-		WHEN :t_visit < t_unit_frecency
-			THEN t_unit_frecency + :half_life * log(2, 1 + pow(2, (:t_visit - t_unit_frecency) / :half_life))
-			ELSE 2 * t_unit_frecency - :t_visit + :half_life * log(2, 1 + pow(2, (t_unit_frecency - :t_visit) / :half_life))
+		t_unit_frecency = CASE
+			WHEN :t_visit < t_unit_frecency
+			THEN t_unit_frecency + :half_life * log2(1 + pow(2, (:t_visit - t_unit_frecency) / :half_life))
+			ELSE :t_visit + :half_life * log2(1 + pow(2, (t_unit_frecency - :t_visit) / :half_life))
 		END;
 EOF
 }

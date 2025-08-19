@@ -7,6 +7,7 @@ macos-titlebar-style = tabs
 cursor-style = block
 window-inherit-working-directory = true
 shell-integration = zsh
+shell-integration-features = no-title,no-cursor
 
 keybind = cmd+enter=ignore
 keybind = ctrl+s>\=new_split:right
@@ -19,5 +20,4 @@ keybind = ctrl+l=goto_split:right
 theme = "GruvboxDark"
 command = "login -fpql ccheek /bin/zsh"
 
-shell-integration-features = no-title
 resize-overlay = never
