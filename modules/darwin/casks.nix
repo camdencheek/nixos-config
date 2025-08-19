@@ -12,6 +12,7 @@ let
 
     # Productivity Tools
     "bitwarden"
+	 "google-chrome"
     "jordanbaird-ice"
     "stats"
     "logseq"

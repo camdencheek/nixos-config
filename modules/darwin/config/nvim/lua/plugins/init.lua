@@ -26,8 +26,33 @@ return {
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			local lspconfig = require("lspconfig")
 
-			-- Add your LSP servers here with the blink.cmp capabilities
-			-- Example: lspconfig.lua_ls.setup({ capabilities = capabilities })
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+				settings = {
+					Lua = {
+						runtime = {
+							-- Tell the language server which version of Lua you're using
+							-- (most likely LuaJIT in the case of Neovim)
+							version = "LuaJIT",
+						},
+						diagnostics = {
+							-- Get the language server to recognize the `vim` global
+							globals = {
+								"vim",
+								"require",
+							},
+						},
+						workspace = {
+							-- Make the server aware of Neovim runtime files
+							library = vim.api.nvim_get_runtime_file("", true),
+						},
+						-- Do not send telemetry data containing a randomized but unique identifier
+						telemetry = {
+							enable = false,
+						},
+					},
+				},
+			})
 		end,
 	},
 	{
@@ -45,7 +70,8 @@ return {
 	{ "echasnovski/mini.comment", version = "*", opts = {} },
 	{ "echasnovski/mini.jump", version = "*", opts = {} },
 	{ "echasnovski/mini.pairs", version = "*", opts = {} },
-	{ "echasnovski/mini.git", version = "*", opts = {} },
+	{ "echasnovski/mini-git", version = "*", main = "mini.git", opts = {} },
+	{ "echasnovski/mini.diff", version = "*", opts = {} },
 	{
 		"echasnovski/mini.statusline",
 		version = "*",
@@ -148,4 +174,12 @@ return {
 		dependencies = { { "mason-org/mason.nvim", opts = {} }, "neovim/nvim-lspconfig" },
 	},
 	{ "sindrets/diffview.nvim", opts = {} },
+	{
+		"manuuurino/autoread.nvim",
+		cmd = "Autoread",
+		opts = {
+			interval = 500,
+			cursor_behavior = "preserve",
+		},
+	},
 }

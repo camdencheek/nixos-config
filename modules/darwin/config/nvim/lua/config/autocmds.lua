@@ -18,3 +18,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd({"BufWritePost", "TextChanged", "InsertLeave"}, {
   callback = function() vim.cmd("normal! zx") end
 })
+
+-- Enable word-boundary wrapping for markdown files
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = {"*.md", "*.mdx", "*.svx"},
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+  end
+})

@@ -1,4 +1,5 @@
 {
+  "autoread.nvim": { "branch": "main", "commit": "f4e1e3b517e0797442e7f47acf4e723606e0171d" },
   "blink.cmp": { "branch": "main", "commit": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8" },
   "conform.nvim": { "branch": "master", "commit": "26ebdcfb4f3c9d33d6f81c9534037bd5172b6d65" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
@@ -8,8 +9,10 @@
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "1ec4da522fa49dcecee8d190efda273464dd2192" },
   "mason.nvim": { "branch": "main", "commit": "7dc4facca9702f95353d5a1f87daf23d78e31c2a" },
+  "mini-git": { "branch": "main", "commit": "a0ddc6302f654523053c28109e8b6dbbf05c08f8" },
   "mini.ai": { "branch": "main", "commit": "e139eb1101beb0250fea322f8c07a42f0f175688" },
   "mini.comment": { "branch": "main", "commit": "fb867a9246f9b892cf51a8c84a3f8479cdf1558c" },
+  "mini.diff": { "branch": "main", "commit": "ec8a5ae365c5d15920721ea42b1351dbc9e61f2d" },
   "mini.icons": { "branch": "main", "commit": "397ed3807e96b59709ef3292f0a3e253d5c1dc0a" },
   "mini.jump": { "branch": "main", "commit": "8ae04c8c88ebe7b01726b330e7921454b08e5ff6" },
   "mini.pairs": { "branch": "main", "commit": "69864a2efb36c030877421634487fd90db1e4298" },
