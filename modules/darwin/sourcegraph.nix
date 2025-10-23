@@ -62,24 +62,6 @@ in
 
     # Sourcegraph-specific files and configurations
     home-manager.users.${locals.username} = {
-      home.file = {
-        # Bazel wrapper
-        ".bin/bazel" = {
-          text = ''
-            #!/bin/sh
-            exec bazelisk "$@"
-          '';
-          executable = true;
-        };
-
-        # Git config for work
-        ".config/git/config_work" = {
-          text = ''
-            [user]
-            	email = camden@sourcegraph.com
-          '';
-        };
-      };
 
       # Add git configuration for Sourcegraph repositories
       programs.git = {

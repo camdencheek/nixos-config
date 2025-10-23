@@ -44,7 +44,6 @@ with pkgs;
 
 # Language tools
 	vlc-bin
-	telegram-desktop
 	vscode
 
 # Encryption and security tools
