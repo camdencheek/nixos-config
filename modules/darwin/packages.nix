@@ -12,10 +12,13 @@ with pkgs;
   bat
   btop
   coreutils
+  pkg-config
+  cmake
   direnv
   docker
   localsend
   docker-compose
+  duckdb
   dtrx
   eza
   fre
@@ -47,14 +50,11 @@ with pkgs;
   nixd
   nil # another nix language server
   nixfmt-rfc-style
-  go
-  gopls
   rustup
   nodejs_24
   pnpm
   bun
   vlc-bin
-  spotify
   telegram-desktop
   vscode
 
@@ -93,7 +93,7 @@ with pkgs;
   tree-sitter
 
   # Python packages
-  python3
+  python312
   virtualenv
   uv
 ]

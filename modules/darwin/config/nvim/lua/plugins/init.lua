@@ -24,35 +24,32 @@ return {
 		dependencies = { "saghen/blink.cmp" },
 		config = function()
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
-			local lspconfig = require("lspconfig")
+			capabilities.textDocument.definition = { dynamicRegistration = true, linkSupport = true }
+			capabilities.textDocument.references = { dynamicRegistration = true }
 
-			lspconfig.lua_ls.setup({
+			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
 				settings = {
 					Lua = {
 						runtime = {
-							-- Tell the language server which version of Lua you're using
-							-- (most likely LuaJIT in the case of Neovim)
 							version = "LuaJIT",
 						},
 						diagnostics = {
-							-- Get the language server to recognize the `vim` global
 							globals = {
 								"vim",
 								"require",
 							},
 						},
 						workspace = {
-							-- Make the server aware of Neovim runtime files
 							library = vim.api.nvim_get_runtime_file("", true),
 						},
-						-- Do not send telemetry data containing a randomized but unique identifier
 						telemetry = {
 							enable = false,
 						},
 					},
 				},
 			})
+			vim.lsp.enable("lua_ls")
 		end,
 	},
 	{
@@ -70,7 +67,6 @@ return {
 	{ "echasnovski/mini.comment", version = "*", opts = {} },
 	{ "echasnovski/mini.jump", version = "*", opts = {} },
 	{ "echasnovski/mini.pairs", version = "*", opts = {} },
-	{ "echasnovski/mini-git", version = "*", main = "mini.git", opts = {} },
 	{ "echasnovski/mini.diff", version = "*", opts = {} },
 	{
 		"echasnovski/mini.statusline",
@@ -80,8 +76,6 @@ return {
 			content = {
 				active = function()
 					local mode, mode_hl = require("mini.statusline").section_mode({ trunc_width = 120 })
-					local git = require("mini.statusline").section_git({ trunc_width = 40 })
-					local diff = require("mini.statusline").section_diff({ trunc_width = 75 })
 					local diagnostics = require("mini.statusline").section_diagnostics({ trunc_width = 75 })
 					local filename = require("mini.statusline").section_filename({ trunc_width = 140 })
 					local location = require("mini.statusline").section_location({ trunc_width = 75 })
@@ -89,7 +83,7 @@ return {
 
 					return require("mini.statusline").combine_groups({
 						{ hl = mode_hl, strings = { mode } },
-						{ hl = "MiniStatuslineDevinfo", strings = { git, diff, diagnostics } },
+						{ hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
 						"%<",
 						{ hl = "MiniStatuslineFilename", strings = { filename } },
 						"%=",
@@ -103,6 +97,11 @@ return {
 	{ "echasnovski/mini.splitjoin", version = "*", opts = {} },
 	{ "echasnovski/mini.trailspace", version = "*", opts = {} },
 	{ "echasnovski/mini.icons", version = "*", opts = {} },
+
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = {},
+	},
 
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -120,6 +119,7 @@ return {
 					"typescript",
 					"svelte",
 					"html",
+					"yaml",
 				},
 				sync_install = false,
 				highlight = { enable = true },
@@ -173,13 +173,11 @@ return {
 		opts = {},
 		dependencies = { { "mason-org/mason.nvim", opts = {} }, "neovim/nvim-lspconfig" },
 	},
-	{ "sindrets/diffview.nvim", opts = {} },
 	{
-		"manuuurino/autoread.nvim",
-		cmd = "Autoread",
-		opts = {
-			interval = 500,
-			cursor_behavior = "preserve",
-		},
+		"sourcegraph/amp.nvim",
+		branch = "main",
+		lazy = false,
+		opts = { auto_start = true, log_level = "info" },
 	},
+	{ "sindrets/diffview.nvim" },
 }

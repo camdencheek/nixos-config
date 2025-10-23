@@ -10,6 +10,10 @@ vim.opt.softtabstop = 3
 vim.opt.wrap = false
 vim.opt.linebreak = true
 
+-- Case-insensitive search by default
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 -- Enable treesitter-based folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"

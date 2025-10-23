@@ -31,3 +31,13 @@ vim.keymap.set("n", "<leader>fg", function()
 		},
 	})
 end, { desc = "Live grep (fzf-lua)" })
+
+-- Visual line navigation for wrapped text
+vim.keymap.set("n", "j", "gj", { desc = "Move down by visual line" })
+vim.keymap.set("n", "k", "gk", { desc = "Move up by visual line" })
+
+-- Window navigation with Ctrl+h/j/k/l
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Focus window left" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Focus window down" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Focus window up" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Focus window right" })

@@ -14,11 +14,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
--- Recompute treesitter folds when file changes
-vim.api.nvim_create_autocmd({"BufWritePost", "TextChanged", "InsertLeave"}, {
-  callback = function() vim.cmd("normal! zx") end
-})
-
 -- Enable word-boundary wrapping for markdown files
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   pattern = {"*.md", "*.mdx", "*.svx"},

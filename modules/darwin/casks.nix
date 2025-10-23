@@ -13,20 +13,19 @@ let
     # Productivity Tools
     "bitwarden"
 	 "google-chrome"
-    "jordanbaird-ice"
+    # "jordanbaird-ice"
     "stats"
-    "logseq"
     "notion-calendar"
     "logi-options+"
     "monitorcontrol"
     "cleanshot"
-    "superwhisper"
 	 "raycast"
     "firefox@developer-edition"
 	 "obsidian"
+	 "spotify"
 
     # Other
-    "betterdisplay"
+    # "betterdisplay"
     "gimp"
     "inkscape"
     "tailscale"
