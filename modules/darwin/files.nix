@@ -24,8 +24,7 @@
 
 
   ".config/git" = {
-    source = ./config/git;
-    recursive = true;
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/darwin/config/git";
   };
 
   ".psqlrc" = {

@@ -14,6 +14,7 @@ with pkgs;
   coreutils
   direnv
   docker
+  localsend
   docker-compose
   dtrx
   eza
