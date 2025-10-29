@@ -50,6 +50,12 @@ return {
 				},
 			})
 			vim.lsp.enable("lua_ls")
+
+			vim.lsp.config("ts_ls", {
+				capabilities = capabilities,
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "tsx", "jsx" },
+			})
+			vim.lsp.enable("ts_ls")
 		end,
 	},
 	{
@@ -110,6 +116,7 @@ return {
 			local configs = require("nvim-treesitter.configs")
 			configs.setup({
 				ensure_installed = {
+					"tsx",
 					"c",
 					"lua",
 					"vim",
@@ -132,21 +139,23 @@ return {
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
-				lua = { "stylua" },
-				javascript = { "prettier" },
-				typescript = { "prettier" },
-				json = { "prettier" },
-				markdown = { "prettier" },
-				yaml = { "prettier" },
-				svelte = { "prettier" },
-				css = { "prettier" },
-				scss = { "prettier" },
-				html = { "prettier" },
-			},
+			lua = { "stylua" },
+			javascript = { "prettier" },
+			javascriptreact = { "prettier" },
+			typescript = { "prettier" },
+			typescriptreact = { "prettier" },
+			json = { "prettier" },
+			markdown = { "prettier" },
+			yaml = { "prettier" },
+			svelte = { "prettier" },
+			css = { "prettier" },
+			 scss = { "prettier" },
+			html = { "prettier" },
+		},
 
 			format_on_save = {
-				lsp_format = "fallback",
-				timeout_ms = 500,
+			lsp_format = "never",
+			timeout_ms = 500,
 			},
 		},
 	},

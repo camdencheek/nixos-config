@@ -24,6 +24,7 @@ let
 	 "obsidian"
 	 "spotify"
 	 "telegram"
+	 "voiceink"
 
     # Other
     # "betterdisplay"

@@ -1,6 +1,6 @@
 [user]
 	name = Camden Cheek
-	signingkey = ~/.ssh/id_github.pub
+	signingkey = /Users/ccheek/.ssh/id_github_signing.pub
 
 [init]
 	defaultBranch = main
@@ -9,10 +9,10 @@
 	cookiefile = /Users/ccheek/.gitcookies
 
 [commit]
-    gpgSign = true
+	gpgsign = true
 
 [gpg]
-    format = ssh
+	format = ssh
 
 [pull]
 	rebase = true
