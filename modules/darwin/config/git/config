@@ -54,3 +54,4 @@
     path = config_work
 [core]
 	excludesFile = /Users/ccheek/.config/git/ignore
+	pager = less -FX

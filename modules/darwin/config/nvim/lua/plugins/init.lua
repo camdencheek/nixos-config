@@ -180,4 +180,10 @@ return {
 		opts = { auto_start = true, log_level = "info" },
 	},
 	{ "sindrets/diffview.nvim" },
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		opts = {
+			mode = "topline",
+		},
+	},
 }

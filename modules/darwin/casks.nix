@@ -23,6 +23,7 @@ let
     "firefox@developer-edition"
 	 "obsidian"
 	 "spotify"
+	 "telegram"
 
     # Other
     # "betterdisplay"

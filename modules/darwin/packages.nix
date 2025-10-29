@@ -8,6 +8,9 @@ with pkgs;
 	aspellDicts.en
 	atuin
 	bash-completion
+	mitmproxy
+	lnav
+	dust
 	bat
 	btop
 	coreutils
