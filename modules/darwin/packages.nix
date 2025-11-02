@@ -16,6 +16,7 @@ with pkgs;
 	coreutils
 	pkg-config
 	cmake
+	mackup
 	direnv
 	docker
 	localsend
@@ -40,6 +41,7 @@ with pkgs;
 	parallel
 	podman
 	sqlite
+	syncthing
 	wget
 	yq
 	zip

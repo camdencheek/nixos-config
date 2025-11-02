@@ -31,7 +31,7 @@ let
     # "betterdisplay"
     "gimp"
     "inkscape"
-    "tailscale"
+    "tailscale-app"
   ];
   # Sourcegraph-specific casks moved to sourcegraph.nix
   personal = [

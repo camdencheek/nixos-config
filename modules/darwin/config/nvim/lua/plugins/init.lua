@@ -190,6 +190,20 @@ return {
 	},
 	{ "sindrets/diffview.nvim" },
 	{
+		"epwalsh/obsidian.nvim",
+		version = "*",
+		lazy = false,
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			workspaces = {
+				{
+					name = "notes",
+					path = "~/notes",
+				},
+			},
+		},
+	},
+	{
 		"nvim-treesitter/nvim-treesitter-context",
 		opts = {
 			mode = "topline",

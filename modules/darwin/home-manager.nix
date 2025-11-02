@@ -117,6 +117,19 @@ in
         # Marked broken Oct 20, 2022 check later to remove this
         # https://github.com/nix-community/home-manager/issues/3344
         manual.manpages.enable = false;
+
+        launchd.agents.syncthing = {
+          enable = true;
+          config = {
+            Label = "org.nixos.syncthing";
+            ProgramArguments = [ "${pkgs.syncthing}/bin/syncthing" "serve" "--no-browser" ];
+            KeepAlive = true;
+            RunAtLoad = true;
+            ProcessType = "Background";
+            StandardOutPath = "${config.home.homeDirectory}/Library/Logs/syncthing.log";
+            StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/syncthing.log";
+          };
+        };
       };
   };
 }
