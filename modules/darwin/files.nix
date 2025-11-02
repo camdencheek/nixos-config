@@ -34,6 +34,10 @@
   ".config/ghostty/config" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/darwin/config/ghostty/config";
   };
+
+  ".config/jj" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/darwin/config/jj";
+  };
  
   # Bazel wrapper moved to sourcegraph.nix
 }

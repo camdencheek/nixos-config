@@ -25,6 +25,7 @@ let
 	 "spotify"
 	 "telegram"
 	 "voiceink"
+	 "uhk-agent"
 
     # Other
     # "betterdisplay"
