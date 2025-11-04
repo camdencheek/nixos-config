@@ -7,10 +7,6 @@
 
 [http]
 	cookiefile = /Users/ccheek/.gitcookies
-
-[commit]
-	gpgsign = true
-
 [gpg]
 	format = ssh
 
@@ -55,3 +51,11 @@
 [core]
 	excludesFile = /Users/ccheek/.config/git/ignore
 	pager = less -FX
+
+[merge]
+  tool = diffview
+[mergetool]
+  prompt = false
+  keepBackup = false
+[mergetool "diffview"]
+  cmd = nvim -n -c "DiffviewOpen" "$MERGE"

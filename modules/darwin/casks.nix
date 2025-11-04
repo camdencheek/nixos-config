@@ -13,6 +13,7 @@ let
     # Productivity Tools
     "bitwarden"
 	 "google-chrome"
+	 "bruno"
     # "jordanbaird-ice"
     "stats"
     "notion-calendar"
@@ -24,8 +25,11 @@ let
 	 "obsidian"
 	 "spotify"
 	 "telegram"
+	 "docker"
 	 "voiceink"
 	 "uhk-agent"
+	 "wezterm"
+	 "meld"
 
     # Other
     # "betterdisplay"

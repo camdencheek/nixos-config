@@ -13,11 +13,6 @@
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/darwin/config/nvim";
   };
 
-  ".config/atuin/config.toml" = {
-    source = ./config/atuin.toml;
-    recursive = true;
-  };
-
   ".config/zsh/fzf-key-bindings.zsh" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/darwin/config/zsh/fzf-key-bindings.zsh";
   };
@@ -37,6 +32,10 @@
 
   ".config/jj" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/darwin/config/jj";
+  };
+
+  ".ssh/config" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/modules/darwin/config/ssh/config";
   };
  
   # Bazel wrapper moved to sourcegraph.nix

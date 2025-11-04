@@ -28,6 +28,9 @@ in
       cleanup = "none"; # Disable cleanup to prevent sudo prompts
       upgrade = false; # Skip automatic upgrades to speed up rebuilds
     };
+    brews = [
+      "emscripten"
+    ];
     casks = pkgs.callPackage ./casks.nix { inherit locals; };
   };
 
@@ -49,10 +52,31 @@ in
         };
 
         programs = {
+          atuin = {
+            enable = true;
+            enableZshIntegration = true;
+            settings = {
+              update_check = false;
+              search_mode = "fulltext";
+              filter_mode = "host";
+              preload = true;
+            };
+          };
+
           # Documented here: https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
           zsh = {
             enable = true;
             plugins = [
+              {
+                name = "zsh-async";
+                src = pkgs.fetchFromGitHub {
+                  owner = "mafredri";
+                  repo = "zsh-async";
+                  rev = "v1.8.6";
+                  sha256 = "sha256-Js/9vGGAEqcPmQSsumzLfkfwljaFWHJ9sMWOgWDi0NI=";
+                };
+                file = "async.zsh";
+              }
               {
                 name = "powerlevel10k";
                 src = pkgs.zsh-powerlevel10k;
@@ -98,20 +122,7 @@ in
             };
           };
 
-          ssh = {
-            enable = true;
-            includes = [
-              "/Users/${user}/.ssh/config_external"
-            ];
-            matchBlocks = {
-              "github.com" = {
-                identitiesOnly = true;
-                identityFile = [
-                  "/Users/${user}/.ssh/id_github"
-                ];
-              };
-            };
-          };
+
         };
 
         # Marked broken Oct 20, 2022 check later to remove this

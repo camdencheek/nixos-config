@@ -27,37 +27,16 @@ in
     # Sourcegraph-specific packages
     environment.systemPackages = with pkgs; [
       # Development tools
-      gdk
-      findutils
       pcre
-      bazelisk
-      bazel-watcher
-      postgresql
       redis
-      caddy
-      concurrently
       pspg
-      buf
-      biome
-      buildifier
-      k9s
-      kubectl
-      kubernetes-helm
-      terraform
-      bindfs
-      autoconf
-      sox
     ];
 
     # Sourcegraph-specific homebrew casks
     homebrew.casks = [
-      "linear-linear"
       "cleanshot"
-      "figma"
-      "notion"
       "postgres-unofficial"
       "perforce"
-      "dbeaver-community"
     ];
 
     # Sourcegraph-specific files and configurations

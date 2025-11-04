@@ -10,6 +10,7 @@ vim.opt.softtabstop = 3
 vim.opt.wrap = false
 vim.opt.linebreak = true
 vim.opt.scrolloff = 8
+vim.opt.cursorline = true
 
 -- Case-insensitive search by default
 vim.opt.ignorecase = true

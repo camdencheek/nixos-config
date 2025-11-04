@@ -6,6 +6,23 @@ email = "camden@sourcegraph.com"
 # tug: bring nearest bookmark up to recent commit
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 mine = ["log", "-r", "mine()"]
+ws = ["util", "exec", "--", "zsh", "-c", """
+name="$1"
+if [ -z "$name" ]; then
+  read "name?Workspace name: "
+fi
+if [ -z "$name" ]; then
+  echo "No workspace name provided" >&2
+  exit 1
+fi
+ws_dir="$JJ_WORKSPACE_ROOT/.workspaces/$name"
+mkdir -p "$JJ_WORKSPACE_ROOT/.workspaces"
+jj workspace add "$ws_dir" || exit 1
+cd "$ws_dir" || exit 1
+[ -f .mise.toml ] && mise trust
+[ -f package.json ] && pnpm install
+exec $SHELL
+""", "zsh"]
 
 # retrunk:
 # `jj rebase -d 'trunk()'` is shorthand for `jj rebase -b @ -d 'trunk()'`
@@ -25,6 +42,8 @@ lr = ["log", "-r", "all()", "-n", "10"]
 
 [revset-aliases]
 "closest_bookmark(to)" = "heads(::to & bookmarks())"
+"prompt_bookmark(to)" = "heads(::to & bookmarks() & tracked_bookmarks())"
+"immutable_heads()" = "trunk()"
 
 [revsets]
 log = '@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()'
@@ -35,11 +54,24 @@ log = '@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()'
 # From mitchellh
 [template-aliases]
 "format_timestamp(timestamp)" = "timestamp.ago()"
+prompt = '''
+separate(" ",
+  format_short_change_id_with_hidden_and_divergent_info(self),
+  format_short_commit_id(commit_id),
+  if(description == "", label("description placeholder", "(no description)"), ""),
+  if(description.starts_with("wip"), label("wip", "(wip)"), ""),
+  if(conflict, label("conflict", "(conflict)"), "")
+)
+'''
+
+[remotes.origin]
+auto-track-bookmarks = "*"
+
+[templates]
+git_push_bookmark = '"martinvonz/push-" ++ change_id.short()'
 
 [ui]
 default-command = "log"
-diff-editor = ":builtin"
-merge-editor = ":builtin"
 pager = ":builtin"
 editor = "nvim"
 
@@ -51,3 +83,4 @@ key = "~/.ssh/id_github.pub"       # or wherever you store it
 [colors]
 "diff removed token" = { underline = false }
 "diff added token" = { underline = false }
+wip = "yellow"

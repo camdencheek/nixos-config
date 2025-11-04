@@ -41,3 +41,9 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Focus window left" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Focus window down" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Focus window up" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Focus window right" })
+
+-- Prevent <C-c> usage
+vim.keymap.set({ "n", "i", "v", "x", "c", "t" }, "<C-c>", function()
+	vim.api.nvim_echo({ { "Stop using <C-c>", "ErrorMsg" } }, true, {})
+	vim.notify("Stop using <C-c>", vim.log.levels.ERROR)
+end, { desc = "Remind not to use <C-c>" })

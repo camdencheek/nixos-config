@@ -16,6 +16,7 @@ path=(
 	$HOME/.sg
 	$HOME/Library/pnpm
 	/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
+	/Applications/Postgres.app/Contents/Versions/latest/bin
 )
 
 export PNPM_HOME="$HOME/Library/pnpm"
@@ -66,8 +67,6 @@ export FZF_CTRL_T_COMMAND='sqlite3 "$HOME/Library/Application Support/fre/fre.sq
 export FZF_CTRL_T_OPTS='--tiebreak=index --no-sort --bind tab:down --bind shift-tab:up'
 source "$XDG_CONFIG_HOME/zsh/fzf-key-bindings.zsh"
 
-eval "$(atuin init zsh)"
-
 # Update fre on directory change
 fre_chpwd() {
 	local dir=$(realpath "$(pwd)")
@@ -97,3 +96,5 @@ if command -v mise &> /dev/null; then
 fi
 
 export SG_SKIP_AUTO_UPDATE=true
+
+

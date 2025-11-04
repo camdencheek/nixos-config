@@ -102,30 +102,6 @@
         "create-keys" = mkApp "create-keys";
         "check-keys" = mkApp "check-keys";
         "rollback" = mkApp "rollback";
-
-        # Sourcegraph config apps
-        "build-sourcegraph" = {
-          type = "app";
-          program = "${
-            (pkgs.writeScriptBin "build-sourcegraph" ''
-              #!/usr/bin/env bash
-              PATH=${pkgs.git}/bin:$PATH
-              echo "Building Sourcegraph config for ${system}"
-              nix build ".#darwinSourcegraphConfigurations.${system}.system"
-            '')
-          }/bin/build-sourcegraph";
-        };
-        "apply-sourcegraph" = {
-          type = "app";
-          program = "${
-            (pkgs.writeScriptBin "apply-sourcegraph" ''
-              #!/usr/bin/env bash
-              PATH=${pkgs.git}/bin:$PATH
-              echo "Applying Sourcegraph config for ${system}"
-              $(nix build --no-link --print-out-paths ".#darwinSourcegraphConfigurations.${system}.system")/sw/bin/darwin-rebuild switch --flake ".#darwinSourcegraphConfigurations.${system}"
-            '')
-          }/bin/apply-sourcegraph";
-        };
       };
 
       darwinConfigurations.${system} = mkDarwinSystem false;

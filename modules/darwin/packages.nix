@@ -6,11 +6,12 @@ with pkgs;
 	p7zip
 	aspell
 	aspellDicts.en
-	atuin
+	wireguard-tools
 	bash-completion
 	mitmproxy
 	lnav
 	dust
+	delta
 	bat
 	btop
 	coreutils
@@ -43,7 +44,7 @@ with pkgs;
 	sqlite
 	syncthing
 	wget
-	yq
+	yq-go
 	zip
 	zstd
 
@@ -63,7 +64,7 @@ with pkgs;
 	font-awesome
 	hack-font
 	noto-fonts
-	noto-fonts-emoji
+	noto-fonts-color-emoji
 	intel-one-mono
 	meslo-lgs-nf
 

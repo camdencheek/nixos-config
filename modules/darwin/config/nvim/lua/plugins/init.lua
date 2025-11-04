@@ -56,6 +56,38 @@ return {
 				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "tsx", "jsx" },
 			})
 			vim.lsp.enable("ts_ls")
+
+			-- Use project-local svelteserver instead of Mason's, because Mason's
+			-- bundled TypeScript 5.9.3 has a stack overflow bug in findSourceFileWorker
+			-- when processing monorepos with many project references.
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "svelte",
+				callback = function(args)
+					local root = vim.fs.root(args.buf, { "svelte.config.js", "svelte.config.ts" })
+					if not root then
+						return
+					end
+
+					-- Find project-local svelteserver by traversing up from root
+					local cmd = { "svelteserver", "--stdio" }
+					local dir = root
+					while dir and dir ~= "/" do
+						local candidate = dir .. "/node_modules/.bin/svelteserver"
+						if vim.uv.fs_stat(candidate) then
+							cmd = { candidate, "--stdio" }
+							break
+						end
+						dir = vim.fn.fnamemodify(dir, ":h")
+					end
+
+					vim.lsp.start({
+						name = "svelte",
+						cmd = cmd,
+						root_dir = root,
+						capabilities = capabilities,
+					})
+				end,
+			})
 		end,
 	},
 	{
@@ -114,6 +146,11 @@ return {
 		build = ":TSUpdate",
 		config = function()
 			local configs = require("nvim-treesitter.configs")
+			vim.filetype.add({
+				extension = {
+					["md.hbs"] = "markdown.handlebars",
+				},
+			})
 			configs.setup({
 				ensure_installed = {
 					"tsx",
@@ -127,6 +164,7 @@ return {
 					"svelte",
 					"html",
 					"yaml",
+					"glimmer",
 				},
 				sync_install = false,
 				highlight = { enable = true },
@@ -139,23 +177,23 @@ return {
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
-			lua = { "stylua" },
-			javascript = { "prettier" },
-			javascriptreact = { "prettier" },
-			typescript = { "prettier" },
-			typescriptreact = { "prettier" },
-			json = { "prettier" },
-			markdown = { "prettier" },
-			yaml = { "prettier" },
-			svelte = { "prettier" },
-			css = { "prettier" },
-			 scss = { "prettier" },
-			html = { "prettier" },
-		},
+				lua = { "stylua" },
+				javascript = { "prettier" },
+				javascriptreact = { "prettier" },
+				typescript = { "biome" },
+				typescriptreact = { "biome" },
+				json = { "prettier" },
+				markdown = { "prettier" },
+				yaml = { "prettier" },
+				svelte = { "prettier" },
+				css = { "prettier" },
+				scss = { "prettier" },
+				html = { "prettier" },
+			},
 
 			format_on_save = {
-			lsp_format = "never",
-			timeout_ms = 500,
+				lsp_format = "never",
+				timeout_ms = 500,
 			},
 		},
 	},
@@ -189,6 +227,26 @@ return {
 		opts = { auto_start = true, log_level = "info" },
 	},
 	{ "sindrets/diffview.nvim" },
+	{
+		"nicolasgb/jj.nvim",
+		version = "*",
+		config = function()
+			require("jj").setup({})
+		end,
+		keys = {
+			{ "<leader>jl", function() require("jj.cmd").log() end, desc = "jj log" },
+			{ "<leader>js", function() require("jj.cmd").status() end, desc = "jj status" },
+			{ "<leader>jd", function() require("jj.cmd").describe() end, desc = "jj describe" },
+			{ "<leader>jn", function() require("jj.cmd").new() end, desc = "jj new" },
+			{ "<leader>jf", function() require("jj.cmd").fetch() end, desc = "jj fetch" },
+			{ "<leader>jp", function() require("jj.cmd").push() end, desc = "jj push" },
+			{ "<leader>ju", function() require("jj.cmd").undo() end, desc = "jj undo" },
+			{ "<leader>jr", function() require("jj.cmd").redo() end, desc = "jj redo" },
+			{ "<leader>ja", function() require("jj.annotate").annotate() end, desc = "jj annotate file" },
+			{ "<leader>jA", function() require("jj.annotate").annotate_line() end, desc = "jj annotate line" },
+			{ "<leader>jD", function() require("jj.diff").vertical() end, desc = "jj diff vertical" },
+		},
+	},
 	{
 		"epwalsh/obsidian.nvim",
 		version = "*",

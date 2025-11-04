@@ -1,6 +1,5 @@
 font-family = Hack
 font-size = 12
-adjust-cell-height = 2
 window-padding-x = 8
 window-padding-y = 4
 macos-titlebar-style = tabs
@@ -8,6 +7,9 @@ cursor-style = block
 window-inherit-working-directory = true
 shell-integration = zsh
 shell-integration-features = no-title,no-cursor
+
+unfocused-split-opacity = 0.94
+unfocused-split-fill = ebdbb2
 
 keybind = ctrl+s>\=new_split:right
 keybind = ctrl+s>-=new_split:down
