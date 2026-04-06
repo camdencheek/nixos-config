@@ -1,28 +1,11 @@
 [user]
 name = "Camden Cheek"
-email = "camden@sourcegraph.com"
+email = "camden@ampcode.com"
 
 [aliases]
 # tug: bring nearest bookmark up to recent commit
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 mine = ["log", "-r", "mine()"]
-ws = ["util", "exec", "--", "zsh", "-c", """
-name="$1"
-if [ -z "$name" ]; then
-  read "name?Workspace name: "
-fi
-if [ -z "$name" ]; then
-  echo "No workspace name provided" >&2
-  exit 1
-fi
-ws_dir="$JJ_WORKSPACE_ROOT/.workspaces/$name"
-mkdir -p "$JJ_WORKSPACE_ROOT/.workspaces"
-jj workspace add "$ws_dir" || exit 1
-cd "$ws_dir" || exit 1
-[ -f .mise.toml ] && mise trust
-[ -f package.json ] && pnpm install
-exec $SHELL
-""", "zsh"]
 
 # retrunk:
 # `jj rebase -d 'trunk()'` is shorthand for `jj rebase -b @ -d 'trunk()'`
@@ -46,7 +29,7 @@ lr = ["log", "-r", "all()", "-n", "10"]
 "immutable_heads()" = "trunk()"
 
 [revsets]
-log = '@ | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()'
+log = '@ | ancestors(trunk()..(visible_heads() & mine()), 4) | trunk()'
 
 # From indigo
 "branch_start(to)" = "heads(::to & trunk())+ & ::to"

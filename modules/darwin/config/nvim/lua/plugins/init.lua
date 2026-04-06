@@ -143,35 +143,8 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		build = ":TSUpdate",
-		config = function()
-			local configs = require("nvim-treesitter.configs")
-			vim.filetype.add({
-				extension = {
-					["md.hbs"] = "markdown.handlebars",
-				},
-			})
-			configs.setup({
-				ensure_installed = {
-					"tsx",
-					"c",
-					"lua",
-					"vim",
-					"vimdoc",
-					"query",
-					"javascript",
-					"typescript",
-					"svelte",
-					"html",
-					"yaml",
-					"glimmer",
-				},
-				sync_install = false,
-				highlight = { enable = true },
-				indent = { enable = true },
-				fold = { enable = true },
-			})
-		end,
 	},
 	{
 		"stevearc/conform.nvim",
@@ -180,7 +153,13 @@ return {
 				lua = { "stylua" },
 				javascript = { "prettier" },
 				javascriptreact = { "prettier" },
-				typescript = { "biome" },
+				typescript = function(bufnr)
+					if vim.api.nvim_buf_get_name(bufnr):match("%.svelte%.ts$") then
+						return { "prettier" }
+					end
+
+					return { "biome" }
+				end,
 				typescriptreact = { "biome" },
 				json = { "prettier" },
 				markdown = { "prettier" },
@@ -234,17 +213,83 @@ return {
 			require("jj").setup({})
 		end,
 		keys = {
-			{ "<leader>jl", function() require("jj.cmd").log() end, desc = "jj log" },
-			{ "<leader>js", function() require("jj.cmd").status() end, desc = "jj status" },
-			{ "<leader>jd", function() require("jj.cmd").describe() end, desc = "jj describe" },
-			{ "<leader>jn", function() require("jj.cmd").new() end, desc = "jj new" },
-			{ "<leader>jf", function() require("jj.cmd").fetch() end, desc = "jj fetch" },
-			{ "<leader>jp", function() require("jj.cmd").push() end, desc = "jj push" },
-			{ "<leader>ju", function() require("jj.cmd").undo() end, desc = "jj undo" },
-			{ "<leader>jr", function() require("jj.cmd").redo() end, desc = "jj redo" },
-			{ "<leader>ja", function() require("jj.annotate").annotate() end, desc = "jj annotate file" },
-			{ "<leader>jA", function() require("jj.annotate").annotate_line() end, desc = "jj annotate line" },
-			{ "<leader>jD", function() require("jj.diff").vertical() end, desc = "jj diff vertical" },
+			{
+				"<leader>jl",
+				function()
+					require("jj.cmd").log()
+				end,
+				desc = "jj log",
+			},
+			{
+				"<leader>js",
+				function()
+					require("jj.cmd").status()
+				end,
+				desc = "jj status",
+			},
+			{
+				"<leader>jd",
+				function()
+					require("jj.cmd").describe()
+				end,
+				desc = "jj describe",
+			},
+			{
+				"<leader>jn",
+				function()
+					require("jj.cmd").new()
+				end,
+				desc = "jj new",
+			},
+			{
+				"<leader>jf",
+				function()
+					require("jj.cmd").fetch()
+				end,
+				desc = "jj fetch",
+			},
+			{
+				"<leader>jp",
+				function()
+					require("jj.cmd").push()
+				end,
+				desc = "jj push",
+			},
+			{
+				"<leader>ju",
+				function()
+					require("jj.cmd").undo()
+				end,
+				desc = "jj undo",
+			},
+			{
+				"<leader>jr",
+				function()
+					require("jj.cmd").redo()
+				end,
+				desc = "jj redo",
+			},
+			{
+				"<leader>ja",
+				function()
+					require("jj.annotate").annotate()
+				end,
+				desc = "jj annotate file",
+			},
+			{
+				"<leader>jA",
+				function()
+					require("jj.annotate").annotate_line()
+				end,
+				desc = "jj annotate line",
+			},
+			{
+				"<leader>jD",
+				function()
+					require("jj.diff").vertical()
+				end,
+				desc = "jj diff vertical",
+			},
 		},
 	},
 	{
@@ -265,6 +310,7 @@ return {
 		"nvim-treesitter/nvim-treesitter-context",
 		opts = {
 			mode = "topline",
+			max_lines = 3,
 		},
 	},
 }

@@ -95,6 +95,11 @@ if command -v mise &> /dev/null; then
 	eval "$(mise activate zsh)"
 fi
 
+# jj completions
+if command -v jj &> /dev/null; then
+	source <(jj util completion zsh)
+fi
+
 # Workspace helpers live in zsh so they can cd the current shell after creating
 # or selecting a workspace.
 _jj_ws_base_root() {

@@ -22,3 +22,9 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldenable = true
 vim.opt.foldlevel = 99 -- Start with all folds open
 vim.opt.foldlevelstart = 99
+
+-- Persist undo history across sessions
+local undo_dir = vim.fn.stdpath("state") .. "/undo"
+vim.fn.mkdir(undo_dir, "p")
+vim.opt.undofile = true
+vim.opt.undodir = undo_dir .. "//"

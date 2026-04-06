@@ -42,7 +42,6 @@ with pkgs;
 	parallel
 	podman
 	sqlite
-	syncthing
 	wget
 	yq-go
 	zip
