@@ -95,6 +95,142 @@ if command -v mise &> /dev/null; then
 	eval "$(mise activate zsh)"
 fi
 
-export SG_SKIP_AUTO_UPDATE=true
+# Workspace helpers live in zsh so they can cd the current shell after creating
+# or selecting a workspace.
+_jj_ws_base_root() {
+	local workspace_root=$(command jj workspace root) || return 1
+	if [[ "$workspace_root" == */.workspaces/* ]]; then
+		print -r -- "${workspace_root%%/.workspaces/*}"
+	else
+		print -r -- "$workspace_root"
+	fi
+}
 
+_jj_ws_new() {
+	local name="$1"
+	if [[ -n "$name" ]]; then
+		shift
+	fi
+	if [[ -z "$name" ]]; then
+		read "name?Workspace name: "
+	fi
+	if [[ -z "$name" ]]; then
+		echo "No workspace name provided" >&2
+		return 1
+	fi
 
+	local jj_workspace_root=$(_jj_ws_base_root) || return 1
+	local ws_dir="$jj_workspace_root/.workspaces/$name"
+	mkdir -p "$jj_workspace_root/.workspaces" || return 1
+	command jj workspace add "$ws_dir" "$@" || return 1
+	[[ -x "$jj_workspace_root/.jj/ws-setup" ]] && "$jj_workspace_root/.jj/ws-setup" "$ws_dir"
+	cd "$ws_dir" || return 1
+}
+
+_jj_ws_delete() {
+	local name="$1"
+	if [[ -z "$name" ]]; then
+		echo "No workspace selected" >&2
+		return 1
+	fi
+	if [[ "$name" == "default" ]]; then
+		echo "Refusing to delete the default workspace" >&2
+		return 1
+	fi
+
+	local jj_workspace_root=$(_jj_ws_base_root) || return 1
+	local current_root=$(command jj workspace root) || return 1
+	local ws_dir="$jj_workspace_root/.workspaces/$name"
+	if [[ "$current_root" == "$ws_dir" ]]; then
+		echo "Refusing to delete the current workspace" >&2
+		return 1
+	fi
+
+	local confirm
+	read "confirm?Delete workspace '$name' and remove '$ws_dir'? [y/N] "
+	if [[ "$confirm" != [yY] ]]; then
+		return 0
+	fi
+
+	command jj workspace forget "$name" || return 1
+	if [[ -d "$ws_dir" ]]; then
+		rm -rf -- "$ws_dir" || return 1
+	fi
+}
+
+_jj_ws_fzf() {
+	local result key selection name jj_workspace_root ws_dir
+
+	while true; do
+		result=$(command jj workspace list | fzf \
+			--prompt='jj workspace> ' \
+			--height=40% \
+			--reverse \
+			--expect=ctrl-space,ctrl-x \
+			--header='Enter: cd  Ctrl-Space: new  Ctrl-X: delete  Type to search') || return
+
+		key=${result%%$'\n'*}
+		selection=${result#*$'\n'}
+		if [[ "$selection" == "$result" ]]; then
+			selection="$key"
+			key=""
+		fi
+		name=${selection%%:*}
+
+		case "$key" in
+			ctrl-space)
+				_jj_ws_new
+				return
+				;;
+			ctrl-x)
+				_jj_ws_delete "$name" || return 1
+				;;
+			*)
+				[[ -z "$name" ]] && return
+				jj_workspace_root=$(_jj_ws_base_root) || return 1
+				if [[ "$name" == "default" ]]; then
+					ws_dir="$jj_workspace_root"
+				else
+					ws_dir="$jj_workspace_root/.workspaces/$name"
+				fi
+				cd "$ws_dir" || return 1
+				return
+				;;
+		esac
+	done
+}
+
+# Wrap jj so `jj ws new <name>` creates a workspace and cd's into it in the
+# current shell (a jj util-exec alias can't change the parent shell's cwd).
+# Bare `jj ws`/`jj workspace` opens the workspace fzf UI; other `jj ws`
+# subcommands are forwarded to `jj workspace`.
+jj() {
+	case "$1" in
+		ws)
+			shift
+			case "$1" in
+				"")
+					_jj_ws_fzf
+					;;
+				new)
+					shift
+					_jj_ws_new "$@"
+					;;
+				*)
+					command jj workspace "$@"
+					;;
+			esac
+			;;
+		workspace)
+			shift
+			if [[ $# -eq 0 ]]; then
+				_jj_ws_fzf
+			else
+				command jj workspace "$@"
+			fi
+			;;
+		*)
+			command jj "$@"
+			;;
+	esac
+}
