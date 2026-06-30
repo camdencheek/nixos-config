@@ -99,6 +99,20 @@
     '';
   };
 
+  # nix-darwin applies this mapping during activation, but macOS clears
+  # hidutil UserKeyMapping on reboot. Reapply it at login and periodically
+  # in case macOS resets it during early login or keyboard reconnects.
+  launchd.user.agents.caps-lock-to-control.serviceConfig = {
+    ProgramArguments = [
+      "/usr/bin/hidutil"
+      "property"
+      "--set"
+      ''{"UserKeyMapping":${builtins.toJSON config.system.keyboard.userKeyMapping}}''
+    ];
+    RunAtLoad = true;
+    StartInterval = 60;
+  };
+
   # Configure and auto-start Redis
   services.redis = {
     enable = true;
