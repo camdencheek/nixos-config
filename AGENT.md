@@ -1,4 +1,4 @@
-# Agent Instructions for NixOS Config
+# Agent Instructions for macOS Nix Config
 
 ## Testing Changes
 
@@ -12,5 +12,4 @@ This ensures all changes work correctly and the system is properly updated.
 ## Commands
 
 - **Regular config**: `sudo darwin-rebuild switch --flake ".#aarch64-darwin"`
-- **Sourcegraph config**: `sudo darwin-rebuild switch --flake ".#darwinSourcegraphConfigurations.aarch64-darwin"`
 - **Development shell**: `nix develop`

@@ -2,8 +2,10 @@
   description = "Nix config for Camden's macOS machines";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    agenix.url = "github:ryantm/agenix";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,10 +29,6 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    localConfig = {
-      url = "/Users/ccheek/src/camdencheek/nixos-config/locals.nix";
-      flake = false;
-    };
   };
   outputs =
     {
@@ -43,11 +41,9 @@
       homebrew-cask,
       home-manager,
       nixpkgs,
-      agenix,
-      localConfig,
     }@inputs:
     let
-      locals = import localConfig { };
+      locals = import ./locals.nix { };
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
       mkApp = scriptName: {
@@ -57,14 +53,14 @@
             #!/usr/bin/env bash
             PATH=${pkgs.git}/bin:$PATH
             echo "Running ${scriptName} for ${system}"
-            exec ${self}/apps/${system}/${scriptName}
+            exec ${self}/apps/${system}/${scriptName} "$@"
           '')
         }/bin/${scriptName}";
       };
-      mkDarwinSystem = sourcegraph: darwin.lib.darwinSystem {
+      darwinSystem = darwin.lib.darwinSystem {
         inherit system;
         specialArgs = inputs // {
-          locals = if sourcegraph then locals // { sourcegraph = true; } else locals;
+          inherit locals;
         };
         modules = [
           determinate.darwinModules.default
@@ -92,8 +88,6 @@
         nativeBuildInputs = [
           bashInteractive
           git
-          age
-          age-plugin-yubikey
         ];
         shellHook = ''
           export EDITOR=vim
@@ -101,16 +95,11 @@
       };
 
       apps.${system} = {
-        "apply" = mkApp "apply";
-        "build" = mkApp "build";
-        "build-switch" = mkApp "build-switch";
-        "copy-keys" = mkApp "copy-keys";
-        "create-keys" = mkApp "create-keys";
-        "check-keys" = mkApp "check-keys";
-        "rollback" = mkApp "rollback";
+        build = mkApp "build";
+        build-switch = mkApp "build-switch";
+        rollback = mkApp "rollback";
       };
 
-      darwinConfigurations.${system} = mkDarwinSystem false;
-      darwinSourcegraphConfigurations.${system} = mkDarwinSystem true;
+      darwinConfigurations.${system} = darwinSystem;
     };
 }

@@ -1,20 +1,10 @@
-{
-  config,
-  pkgs,
-  locals,
-  ...
-}:
+{ pkgs, locals, ... }:
 
 let
   user = locals.username;
   files = import ./files.nix;
 in
 {
-  imports = [
-    ./dock
-    ./locals.nix
-  ];
-
   users.users.${user} = {
     name = "${user}";
     home = "/Users/${user}";
@@ -44,7 +34,6 @@ in
       {
         home = {
           enableNixpkgsReleaseCheck = false;
-          packages = pkgs.callPackage ./packages.nix { };
           file = files { inherit config lib; };
           stateVersion = "23.11";
         };
@@ -119,8 +108,6 @@ in
               share = true;
             };
           };
-
-
         };
 
         # Marked broken Oct 20, 2022 check later to remove this

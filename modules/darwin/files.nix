@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, ... }:
 
 let
   repoDir = "${config.home.homeDirectory}/src/camdencheek/nixos-config";
@@ -20,13 +20,12 @@ in
     source = config.lib.file.mkOutOfStoreSymlink "${repoDir}/modules/darwin/config/zsh/fzf-key-bindings.zsh";
   };
 
-
   ".config/git" = {
     source = config.lib.file.mkOutOfStoreSymlink "${repoDir}/modules/darwin/config/git";
   };
 
   ".psqlrc" = {
-  text = builtins.readFile ./config/psqlrc;
+    text = builtins.readFile ./config/psqlrc;
   };
 
   ".config/ghostty/config" = {
@@ -40,6 +39,4 @@ in
   ".ssh/config" = {
     source = config.lib.file.mkOutOfStoreSymlink "${repoDir}/modules/darwin/config/ssh/config";
   };
- 
-  # Bazel wrapper moved to sourcegraph.nix
 }

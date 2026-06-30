@@ -6,24 +6,15 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.my.sourcegraph;
-  gdk = pkgs.google-cloud-sdk.withExtraComponents (
-    with pkgs.google-cloud-sdk.components;
-    [
-      gke-gcloud-auth-plugin
-      cloud-sql-proxy
-    ]
-  );
 in
 {
   options.my.sourcegraph = {
-    enable = mkEnableOption "Enable Sourcegraph-specific configurations";
+    enable = lib.mkEnableOption "Sourcegraph-specific configuration";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     # Sourcegraph-specific packages
     environment.systemPackages = with pkgs; [
       # Development tools
@@ -34,7 +25,6 @@ in
 
     # Sourcegraph-specific homebrew casks
     homebrew.casks = [
-      "cleanshot"
       "postgres-app"
     ];
 

@@ -1,7 +1,6 @@
 {
   config,
-  lib,
-  pkgs,
+  locals,
   ...
 }:
 
@@ -47,7 +46,7 @@
   };
 
   # Set primary user for nix-darwin to support user-specific options
-  system.primaryUser = "${config.locals.username}";
+  system.primaryUser = locals.username;
 
   system.activationScripts.postActivation.text = ''
     echo "refreshing LaunchServices for Nix apps..." >&2

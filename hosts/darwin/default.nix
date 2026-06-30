@@ -1,5 +1,4 @@
 {
-  agenix,
   config,
   pkgs,
   locals,
@@ -8,9 +7,7 @@
 
 {
   imports = [
-    ../../modules/darwin/secrets.nix
     ../../modules/darwin
-    agenix.darwinModules.default
   ];
 
   # Let Determinate Nix manage the Nix installation, daemon, and nix.conf.
@@ -25,7 +22,7 @@
         "https://nix-community.cachix.org"
         "https://cache.nixos.org"
       ];
-      trusted-public-keys = [ 
+      trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
@@ -47,7 +44,7 @@
   ids.gids.nixbld = 350;
 
   # Load package configuration
-  environment.systemPackages = (import ../../modules/darwin/packages.nix { inherit pkgs; });
+  environment.systemPackages = import ../../modules/darwin/packages.nix { inherit pkgs; };
 
   # Enable Sourcegraph-specific configuration if necessary
   my.sourcegraph.enable = locals.tags.work;
