@@ -48,4 +48,26 @@
 
   # Set primary user for nix-darwin to support user-specific options
   system.primaryUser = "${config.locals.username}";
+
+  system.activationScripts.postActivation.text = ''
+    echo "refreshing LaunchServices for Nix apps..." >&2
+    lsregister=/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister
+    systemApps='${config.system.build.applications}/Applications'
+    nixApps='/Applications/Nix Apps'
+
+    if [ -x "$lsregister" ] && [ -d "$systemApps" ]; then
+      /usr/bin/find "$systemApps" -maxdepth 1 -type l -name '*.app' -print0 | while IFS= read -r -d ''' appLink; do
+        appTarget=$(readlink "$appLink" || true)
+        if [[ "$appTarget" == /nix/store/*/Applications/*.app ]]; then
+          "$lsregister" -u "$appTarget" >/dev/null 2>&1 || true
+        fi
+      done
+
+      if [ -d "$nixApps" ]; then
+        /usr/bin/find "$nixApps" -maxdepth 1 -name '*.app' -print0 | while IFS= read -r -d ''' app; do
+          "$lsregister" -f "$app" >/dev/null 2>&1 || true
+        done
+      fi
+    fi
+  '';
 }

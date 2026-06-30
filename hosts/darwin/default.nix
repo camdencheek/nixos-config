@@ -83,6 +83,12 @@
         launchanim = true;
         orientation = "bottom";
         tilesize = 48;
+
+        # Disable all hot corners.
+        wvous-tl-corner = 1;
+        wvous-tr-corner = 1;
+        wvous-bl-corner = 1;
+        wvous-br-corner = 1;
       };
 
       finder = {

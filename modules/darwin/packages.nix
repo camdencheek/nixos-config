@@ -19,9 +19,11 @@ with pkgs;
 	cmake
 	mackup
 	direnv
+	bruno
 	docker
 	localsend
 	docker-compose
+	discord
 	duckdb
 	dtrx
 	eza
@@ -30,6 +32,8 @@ with pkgs;
 	git
 	git-open
 	github-cli
+	ghostty-bin
+	ghostty-bin.terminfo
 	graphviz
 	jjui
 	jujutsu
@@ -46,6 +50,16 @@ with pkgs;
 	yq-go
 	zip
 	zstd
+
+# GUI applications
+	firefox-devedition
+	google-chrome
+	raycast
+	slack
+	spotify
+	stats
+	telegram-desktop
+	whatsapp-for-mac
 
 # Language tools
 	vlc-bin

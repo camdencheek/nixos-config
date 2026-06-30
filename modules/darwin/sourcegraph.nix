@@ -36,7 +36,6 @@ in
     homebrew.casks = [
       "cleanshot"
       "postgres-app"
-      "perforce"
     ];
 
     # Sourcegraph-specific files and configurations

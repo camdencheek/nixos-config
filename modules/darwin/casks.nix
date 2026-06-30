@@ -2,35 +2,17 @@
 
 let
   default = [
-    # Communication Tools
-    "discord"
-    "slack"
-    "whatsapp"
-    "ghostty"
-
-    # Productivity Tools
+    # Productivity Tools without suitable nixpkgs replacements
     "bitwarden"
-	 "google-chrome"
-	 "bruno"
-    # "jordanbaird-ice"
-    "stats"
     "notion-calendar"
     "cleanshot"
-	 "raycast"
-    "firefox@developer-edition"
-	 "spotify"
-	 "telegram"
-	 "voiceink"
-	 "uhk-agent"
-
-    # Other
-    # "betterdisplay"
+    "voiceink"
+    "uhk-agent"
     "tailscale-app"
   ];
   # Sourcegraph-specific casks moved to sourcegraph.nix
   personal = [
     "steam"
-    "qbittorrent"
   ];
 in
 lib.unique (

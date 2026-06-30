@@ -25,7 +25,7 @@ in
   homebrew = {
     enable = true;
     onActivation = {
-      cleanup = "none"; # Disable cleanup to prevent sudo prompts
+      cleanup = "uninstall"; # Remove Homebrew packages not declared in this config
       upgrade = false; # Skip automatic upgrades to speed up rebuilds
     };
     brews = [ ];
