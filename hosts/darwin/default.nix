@@ -13,10 +13,10 @@
     agenix.darwinModules.default
   ];
 
-  # Setup user, packages, programs
-  nix = {
-    package = pkgs.nix;
-    settings = {
+  # Let Determinate Nix manage the Nix installation, daemon, and nix.conf.
+  determinateNix = {
+    enable = true;
+    customSettings = {
       trusted-users = [
         "@admin"
         "${locals.username}"
@@ -31,25 +31,13 @@
       ];
       max-jobs = "auto";
       cores = 0; # Use all available cores
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      keep-outputs = true;
+      keep-derivations = true;
     };
-
-    gc = {
-      automatic = true;
-      interval = {
-        Weekday = 0;
-        Hour = 2;
-        Minute = 0;
-      };
-      options = "--delete-older-than 30d";
-    };
-
-    optimise.automatic = true;
-    
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-outputs = true
-      keep-derivations = true
-    '';
   };
 
   # Turn off NIX_PATH warnings now that we're using flakes
@@ -67,18 +55,24 @@
   system = {
     stateVersion = 4;
 
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
+    };
+
     defaults = {
       NSGlobalDomain = {
         AppleShowAllExtensions = true;
         ApplePressAndHoldEnabled = false;
 
-        # 120, 90, 60, 30, 12, 6, 2
+        # Lower is faster.
         KeyRepeat = 2;
 
-        # 120, 94, 68, 35, 25, 15
+        # Lower is shorter delay before repeat starts.
         InitialKeyRepeat = 15;
 
         "com.apple.mouse.tapBehavior" = 1;
+        "com.apple.swipescrolldirection" = false;
         "com.apple.sound.beep.volume" = 0.0;
         "com.apple.sound.beep.feedback" = 0;
       };
@@ -95,6 +89,14 @@
         _FXShowPosixPathInTitle = false;
       };
     };
+
+    activationScripts.postActivation.text = ''
+      echo "configuring live key repeat..." >&2
+      /usr/bin/hidutil property --set '{"HIDKeyRepeat":33333333,"HIDInitialKeyRepeat":250000000}' > /dev/null
+
+      echo "configuring default browser..." >&2
+      launchctl asuser "$(id -u -- ${locals.username})" sudo --user=${locals.username} --set-home /usr/bin/osascript -l JavaScript -e 'ObjC.import("CoreServices"); $.LSSetDefaultHandlerForURLScheme($("http"), $("org.mozilla.firefoxdeveloperedition")); $.LSSetDefaultHandlerForURLScheme($("https"), $("org.mozilla.firefoxdeveloperedition")); undefined'
+    '';
   };
 
   # Configure and auto-start Redis

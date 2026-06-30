@@ -5,9 +5,7 @@ let
     # Communication Tools
     "discord"
     "slack"
-    "zoom"
     "whatsapp"
-    "kitty"
     "ghostty"
 
     # Productivity Tools
@@ -17,22 +15,16 @@ let
     # "jordanbaird-ice"
     "stats"
     "notion-calendar"
-    "monitorcontrol"
     "cleanshot"
 	 "raycast"
     "firefox@developer-edition"
-	 "obsidian"
 	 "spotify"
 	 "telegram"
 	 "voiceink"
 	 "uhk-agent"
-	 "wezterm"
-	 "meld"
 
     # Other
     # "betterdisplay"
-    "gimp"
-    "inkscape"
     "tailscale-app"
   ];
   # Sourcegraph-specific casks moved to sourcegraph.nix

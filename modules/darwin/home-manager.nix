@@ -28,9 +28,7 @@ in
       cleanup = "none"; # Disable cleanup to prevent sudo prompts
       upgrade = false; # Skip automatic upgrades to speed up rebuilds
     };
-    brews = [
-      "emscripten"
-    ];
+    brews = [ ];
     casks = pkgs.callPackage ./casks.nix { inherit locals; };
   };
 

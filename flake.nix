@@ -8,6 +8,10 @@
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    determinate = {
+      url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
     };
@@ -24,7 +28,7 @@
       flake = false;
     };
     localConfig = {
-      url = "/Users/ccheek/nixos-config/locals.nix";
+      url = "/Users/ccheek/src/camdencheek/nixos-config/locals.nix";
       flake = false;
     };
   };
@@ -32,6 +36,7 @@
     {
       self,
       darwin,
+      determinate,
       nix-homebrew,
       homebrew-bundle,
       homebrew-core,
@@ -62,6 +67,7 @@
           locals = if sourcegraph then locals // { sourcegraph = true; } else locals;
         };
         modules = [
+          determinate.darwinModules.default
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
           {
